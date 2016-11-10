@@ -1,7 +1,6 @@
 DEMO APPLICATION
 
-1. The dependencies are not committed to the repo to allow for a smaller project size, they are help out of the
-   commit by having them in the gitignore file.
+1. The dependencies are not committed to the repo to allow for a smaller project size, they are help out of the commit by having them in the gitignore file.
 2. When the website is initially cloned to local environment Follow these Steps
     a. Run to following commands
         i. npm install
@@ -10,11 +9,9 @@ DEMO APPLICATION
 
 
 *** GULP COMMANDS ***
-The gulp command is configured based on what is in the ../gulpfile.js so when you add a library through npm or bower
-that is needed for the code please add the path of the js, css, or font to the respective location in the config object.
+The gulp command is configured based on what is in the ../gulpfile.js so when you add a library through npm or bower that is needed for the code please add the path of the js, css, or font to the respective location in the config object.
 
-Any files created in the following folders do not need to be added to the gulp file because I have the content of
-those folders being bundled in the gulp structure:
+Any files created in the following folders do not need to be added to the gulp file because I have the content of those folders being bundled in the gulp structure:
     - app/assets/less
     - app/components
     - app/config
@@ -24,8 +21,7 @@ those folders being bundled in the gulp structure:
 *** COMMANDS ***
 
 gulp
-      - This is the default command and will run all of the file builds (See 'gulp build' command) and finally the watch
-         command that will build all of the files set in the config any time there is a change to one of the files.
+      - This is the default command and will run all of the file builds (See 'gulp build' command) and finally the watch command that will build all of the files set in the config any time there is a change to one of the files.
 
 gulp build
       - Will bundle of all of the files set in the config separated based on:
