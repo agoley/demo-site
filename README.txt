@@ -1,7 +1,8 @@
 DEMO APPLICATION
 
-1. The Dependencies are not committed to the repo to allow for a smaller project size.
-2. When website is initially cloned to local environment Follow these Steps
+1. The dependencies are not committed to the repo to allow for a smaller project size, they are help out of the
+   commit by having them in the gitignore file.
+2. When the website is initially cloned to local environment Follow these Steps
     a. Run to following commands
         i. npm install
         ii. bower install
@@ -23,8 +24,8 @@ those folders being bundled in the gulp structure:
 *** COMMANDS ***
 
 gulp
-      - This is the default command and will run all of the file builds (See 'gulp build' command) and finally the watch command that will build all of the files
-        set in the config any time there is a change to one of the files.
+      - This is the default command and will run all of the file builds (See 'gulp build' command) and finally the watch
+         command that will build all of the files set in the config any time there is a change to one of the files.
 
 gulp build
       - Will bundle of all of the files set in the config separated based on:
