@@ -1,8 +1,13 @@
-(function () {
-	"use strict";
+'use strict';
+		
+var directives = angular.module('directives', []);
+var components = angular.module('components', []);
 
-		angular.module('directives', []);
-		/**/
-    angular.module('DKWSite', ['ngMaterial','ngAnimate', 'ui.router','config','directives']);
+var dkwSite = angular.module('DKWSite', 
+									  ['ngMaterial',
+										'ngAnimate',
+										'ui.router',
+										'directives',
+										'components']);
 
-})();
+

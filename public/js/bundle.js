@@ -1,48 +1,45 @@
-(function () {
-	"use strict";
 
-		angular.module('directives', []);
-		/**/
-    angular.module('DKWSite', ['ngMaterial','ngAnimate', 'ui.router','config','directives']);
+'use strict';
+		
+var directives = angular.module('directives', []);
+var components = angular.module('components', []);
 
-})();
-
-(function(){
-
-  angular
-    .module('config')
-    .config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-      $stateProvider
-      .state('app', {
-        url: "/",
-        views: {
-          'content':{
-            templateUrl: 'views/home.html',
-            controller: 'HomeController as hc'
-          },
-          'header':{
-            templateUrl: 'views/templates/_header.html',
-            controller: 'HeaderController as hdc'
-          }
-        }
-      })      
-      .state('app.construction', {
-        url: "underconstruction",
-        views: {
-          'content@': {
-            templateUrl: 'views/construction.html'
-          }
-        }
-      })
+var dkwSite = angular.module('DKWSite', 
+									  ['ngMaterial',
+										'ngAnimate',
+										'ui.router',
+										'directives',
+										'components']);
 
 
 
-      $urlRouterProvider.otherwise('/');
-      //$locationProvider.html5Mode(true);
-    }]);
+// root component: all other components will be under this component
+// objects: view - this will store the state and other high level objects
+components.component('all', {
+   bindings: {},
+	controller: function () {
+      var ctrl = this;
+		ctrl.view = {};
+   },
+   templateUrl: 'views/all.html'
+});
+// footer component for DKWSite
+components.component('dkwFooter', {
+   bindings: {},
+	controller: function () {
+      var ctrl = this;
+   },
+   templateUrl: 'views/dkw_footer.html'
+});
 
-
-})();
+// header component for DKWSite
+components.component('dkwHeader', {
+   bindings: {},
+	controller: function () {
+      var ctrl = this;
+   },
+   templateUrl: 'views/dkw_header.html'
+});
 
 (function(){
    "use strict";

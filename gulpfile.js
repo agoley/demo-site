@@ -9,7 +9,8 @@ var del = require('del');
 var config = {
   src: {
     appJs:[
-      'app/config/*.js',
+		'app/config/routes.js',
+		'app/config/app.js',
       'app/components/*.js',
       'app/directives/*.js',
       'app/services/*.js'
