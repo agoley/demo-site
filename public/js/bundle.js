@@ -1,16 +1,16 @@
 'use strict';
-		
+
+var routes = angular.module('routes', ['ui.router']);
 var directives = angular.module('directives', []);
 var components = angular.module('components', []);
 
-var dkwSite = angular.module('DKWSite', 
+var dkwSite = angular.module('DKWSite',
 									  ['ngMaterial',
 										'ngAnimate',
 										'ui.router',
 										'directives',
-										'components']);
-
-
+										'components',
+										'routes']);
 
 dkwSite.config(function ($mdThemingProvider) {
 	
@@ -46,6 +46,50 @@ dkwSite.config(function ($mdThemingProvider) {
     .warnPalette('red')
     .backgroundPalette('blue-grey');
 });
+dkwSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+      $stateProvider
+      .state('app', {
+        url: "/",
+        views: {
+          'content':{
+            //templateUrl: 'views/pageTemplates/home.html'
+            component: 'home'
+          }
+        }
+      })
+      .state('app.about', {
+        abstract: true,
+        url: "about",
+        views: {}
+      })
+      .state('app.about.messageFromPresident', {
+        url: "/message-from-the-president",
+        views: {
+          'content@': {
+            //templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'
+            component: 'messageFromPresident'
+          }
+        }
+      })
+      .state('app.solutions', {
+        abstract: true,
+        url: "solutions",
+        views: {}
+      })
+      .state('app.solutions.netCentricSolutions', {
+        url: "/net-centric-solutions",
+        views: {
+          'content@': {
+            //templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'
+            component: 'netCentricSolutions'
+          }
+        }
+      });
+
+      $urlRouterProvider.otherwise('/');
+      //$locationProvider.html5Mode(true);
+    }]);
+
 // root component: all other components will be under this component
 // objects: view - this will store the state and other high level objects
 components.component('all', {
@@ -56,6 +100,7 @@ components.component('all', {
    },
    templateUrl: 'views/all.html'
 });
+
 // footer component for DKWSite
 components.component('dkwFooter', {
    bindings: {},
@@ -100,6 +145,33 @@ components.component('dkwHeader', {
 		
    },
    templateUrl: 'views/dkw_header.html'
+});
+
+// footer component for DKWSite
+components.component('home', {
+   bindings: {},
+	controller: function () {
+      var ctrl = this;
+   },
+   templateUrl: 'views/pageTemplates/home.html'
+});
+
+// footer component for DKWSite
+components.component('netCentricSolutions', {
+   bindings: {},
+	controller: function () {
+      var ctrl = this;
+   },
+   templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'
+});
+
+// footer component for DKWSite
+components.component('messageFromPresident', {
+   bindings: {},
+	controller: function () {
+      var ctrl = this;
+   },
+   templateUrl: 'views/pageTemplates/about/message-from-the-president.html'
 });
 
 (function(){
