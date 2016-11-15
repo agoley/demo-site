@@ -30,7 +30,7 @@ var config = {
       'app/assets/libs/angular-messages/angular-messages.min.js',
       'app/assets/libs/angular-ui-router/release/angular-ui-router.min.js',
       'app/assets/libs/angular-bootstrap/ui-bootstrap.min.js',
-      'app/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js'
+      'app/assets/libs/angular-bootstrap/ui-bootstrap-tpls.js'
     ],
     libsCSS: [
       'app/assets/libs/angular-material/angular-material.min.css',
@@ -41,6 +41,7 @@ var config = {
     ],
     libsFonts: [
       'app/assets/libs/font-awesome/fonts/**',
+      'app/assets/libs/bootstrap/fonts/**'
     ]
   },
   dest:{

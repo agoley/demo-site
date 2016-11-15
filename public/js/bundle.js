@@ -2,7 +2,7 @@
 
 var routes = angular.module('routes', ['ui.router']);
 var directives = angular.module('directives', []);
-var components = angular.module('components', []);
+var components = angular.module('components', ['ui.bootstrap', 'ngAnimate']);
 
 var dkwSite = angular.module('DKWSite',
 									  ['ngMaterial',
@@ -157,9 +157,45 @@ components.component('home', {
    bindings: {},
 	controller: function () {
       var ctrl = this;
+      // variables
+      ctrl.myInterval = 7000;
+      ctrl.active = 0;
+
+      ctrl.slides = [
+        {"id":0,"image":"images/carousel/washington-dc7.jpg", "title":"Industry, Innovation, Influence", "text":""},
+        {"id":1,"image":"images/carousel/washington-dc2.jpg", "title":"Over a Decade of Experience", "text":"Focusing on enterprise solutions and services for more than 70 Federal Government customers"},
+        {"id":2,"image":"images/carousel/washington-dc1.jpg", "title":"The DKW Commitment", "text":"Our Center of Excellence (COEs) ensure that our customers receive the superior knowledge and expertise needed to rapidly launch applications without sacrificing quality"},
+        {"id":3,"image":"images/carousel/washington-dc3.jpg", "title":"Our Distinction", "text":"What distinguishes DKW is the call to public service that our people bring to the job, We are motivated to perform at a high level"}];
+
+      ctrl.solutions = [
+        {"title":"Enterprise Net-Centric Solutions", "image":"images/networks2.jpg", "content":"DKW designs, engineers, deploys, and maintains a full range of software, database, and web information systems through a structured, disciplined set of proven systems and application software engineering practices and life cycle maintenance techniques. These practices encompass the full life cycle development process from project analysis to project closeout for projects requiring the development or modification of systems and software. Our approach to defining the systems and software engineering practices is based on the Software Engineering Institute’s (SEI) Capability Maturity Model Integration (CMMI) Level 2 best practices, which have been assessed at Capability Maturity Model Integration (CMMI) Level 3."},
+        {"title":"Cyber Security and Intelligence Service", "image":"images/cybersecurity.jpg", "content":"DKW’s Cyber Security Solutions are designed to assist national level organizations and cyber security operation centers (CSOCs) in detecting and thwarting cyber attacks. Our portfolio includes DKW’s Network Security Solutions and additional secure Services. DKW’s Network Security Solutions feature a rich product portfolio designed to help national organizations and CSOCs detect and thwart cyber attacks."},
+        {"title":"Management Consulting", "image":"images/management2.jpg", "content":"Your mission success is our priority. For more than a decade, our customers have relied on DKW’s professional and quick response capabilities. Whether analyzing and reengineering current business processes or assisting you in meeting ever-changing regulations and standards, DKW partners with you to ensure mission success."}
+        ];
+
+      ctrl.selectedSolution = ctrl.solutions[0];
+
+      // functions
+      ctrl.toggleInterval = function() {
+        ctrl.myInterval = (ctrl.myInterval > 0 ? 0 : 5000);
+      }
+      ctrl.isInMotion = function() {
+        return (ctrl.myInterval > 0);
+      };
    },
-   templateUrl: 'views/pageTemplates/home.html'
+   templateUrl: 'views/pageTemplates/home/home.html'
 });
+
+/*ADD to app/assets/libs/angular-bootstrap/ui-bootstrap-tpls.js line 506*/
+/*
+$scope.isInMotion = function() {
+  return ($scope.interval > 0);
+};
+$scope.toggleInterval = function() {
+  $scope.interval = ($scope.interval > 0 ? 0 : 7000);
+  if($scope.interval > 0) { $scope.next(); }
+};
+*/
 
 // footer component for DKWSite
 components.component('netCentricSolutions', {
@@ -179,61 +215,66 @@ components.component('messageFromPresident', {
    templateUrl: 'views/pageTemplates/about/message-from-the-president.html'
 });
 
-(function(){
-   "use strict";
+directives.directive('backImg', ['$window', function($window) {
+  return {
+    restrict: 'EA',
+    link: function ($scope, element, attrs) {
+      var url = attrs.backImg;
+      element.css({'background-image': 'url(' + url +')'});
+    }
+  }
+}]);
 
-    angular.module('directives').directive('randomMotion', ['$timeout', function($timeout) {
-      return {
-        restrict: 'EA',
-        link: function ($scope, element, attrs) {
-          //console.log("Start Motion");
-          // Randomly Set Postion & Velocity
-          var maxVelocity = 100;
-          var posX = Math.min(0, Math.max(20, (Math.random() * 0)));
-          var posY = Math.min(0, Math.max(20, (Math.random() * 10)));
-          var velX = (Math.random() * maxVelocity);
-          var velY = (Math.random() * maxVelocity);
-          var timestamp = null;
+directives.directive('randomMotion', ['$timeout', function($timeout) {
+  return {
+    restrict: 'EA',
+    link: function ($scope, element, attrs) {
+      //console.log("Start Motion");
+      // Randomly Set Postion & Velocity
+      var maxVelocity = 100;
+      var posX = Math.min(0, Math.max(20, (Math.random() * 0)));
+      var posY = Math.min(0, Math.max(20, (Math.random() * 10)));
+      var velX = (Math.random() * maxVelocity);
+      var velY = (Math.random() * maxVelocity);
+      var timestamp = null;
 
-          var parentContainer = element[0].offsetParent;
+      var parentContainer = element[0].offsetParent;
 
-          // Move Object
-          (function tick() {
-            var now = new Date().getTime();
-            var borderX = parentContainer.clientWidth *.20;
-            var borderY = parentContainer.clientHeight *.20;
+      // Move Object
+      (function tick() {
+        var now = new Date().getTime();
+        var borderX = parentContainer.clientWidth *.20;
+        var borderY = parentContainer.clientHeight *.20;
 
-            var maxX = parentContainer.clientWidth - borderX;
-            var maxY = parentContainer.clientHeight - borderY;
+        var maxX = parentContainer.clientWidth - borderX;
+        var maxY = parentContainer.clientHeight - borderY;
 
-            var elapsed = (timestamp || now) - now;
-            timestamp = now;
-            posX += elapsed * velX / 1000;
-            posY += elapsed * velY / 1000;
+        var elapsed = (timestamp || now) - now;
+        timestamp = now;
+        posX += elapsed * velX / 1000;
+        posY += elapsed * velY / 1000;
 
-            if (posX > maxX) {
-                posX = 2 * maxX - posX;
-                velX *= -1;
-            }
-            if (posX < 10) {
-                posX = 10;
-                velX *= -1;
-            }
-            if (posY > maxY) {
-                posY = 2 * maxY - posY;
-                velY *= -1;
-            }
-            if (posY < 10) {
-                posY = 10;
-                velY *= -1;
-            }
-            element.css({ "top": posY, "left": posX });
-            // Set Position to $element top and left
-            // Loop to Move object
-            $timeout(tick, 30);
-          })();
+        if (posX > maxX) {
+            posX = 2 * maxX - posX;
+            velX *= -1;
         }
-      }
-    }]);
-
-})();
+        if (posX < 10) {
+            posX = 10;
+            velX *= -1;
+        }
+        if (posY > maxY) {
+            posY = 2 * maxY - posY;
+            velY *= -1;
+        }
+        if (posY < 10) {
+            posY = 10;
+            velY *= -1;
+        }
+        element.css({ "top": posY, "left": posX });
+        // Set Position to $element top and left
+        // Loop to Move object
+        $timeout(tick, 30);
+      })();
+    }
+  }
+}]);

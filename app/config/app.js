@@ -2,7 +2,7 @@
 
 var routes = angular.module('routes', ['ui.router']);
 var directives = angular.module('directives', []);
-var components = angular.module('components', []);
+var components = angular.module('components', ['ui.bootstrap', 'ngAnimate']);
 
 var dkwSite = angular.module('DKWSite',
 									  ['ngMaterial',

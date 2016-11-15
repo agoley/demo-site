@@ -1,0 +1,32 @@
+<div class="page-container">
+  <!--Home Carousel-->
+  <section class="dkw-carousel">
+    <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
+      <uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
+        <div class="main-img" back-img="{{slide.image}}"></div>
+        <div class="carousel-caption">
+          <div class="caption-title">{{slide.title}}</div>
+          <div class="caption-text">{{slide.text}}</div>
+        </div>
+      </uib-slide>
+    </uib-carousel>
+  </section>
+
+  <!--Solutions-->
+  <section class="dkw-solutions">
+    <div class="selected-solution">
+      <img class="selected-img" ng-src="$ctrl.selectedSolution.image">
+      <div class="selected-content">
+        <div class="selected-title">{{$ctrl.selectedSolution.title}}</div>
+        <div class="selected-text">{{$ctrl.selectedSolution.content | limitTo: 50}}</div>
+      </div>
+    </div>
+    <div class="all-solutions">
+      <div class="solutions-container">
+        <div class="solution-item" ng-repeat="item in $ctrl.solutions">
+          <div class="item-title">{{item.title}}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
