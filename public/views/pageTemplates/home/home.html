@@ -14,16 +14,21 @@
 
   <!--Solutions-->
   <section class="dkw-solutions">
-    <div class="selected-solution">
-      <img class="selected-img" ng-src="$ctrl.selectedSolution.image">
-      <div class="selected-content">
-        <div class="selected-title">{{$ctrl.selectedSolution.title}}</div>
-        <div class="selected-text">{{$ctrl.selectedSolution.content | limitTo: 50}}</div>
+    <div class="selected-solution" >
+      <div class="solutions-title">Our Solutions</div>      
+      <div class="selected-container" ng-animate-swap="$ctrl.selectedSolution">
+        <div class="selected-content" >
+          <div class="selected-title">{{$ctrl.selectedSolution.title}}</div>
+          <div class="selected-text">{{$ctrl.selectedSolution.content | limitTo: 300}}...</div>
+          <md-button class="md-raised">Learn More <i class="fa fa-info-circle"></i></md-button>
+        </div>
+        <img class="selected-img" ng-src="{{$ctrl.selectedSolution.image}}">
       </div>
     </div>
     <div class="all-solutions">
       <div class="solutions-container">
-        <div class="solution-item" ng-repeat="item in $ctrl.solutions">
+        <div class="solution-item" ng-repeat="item in $ctrl.solutions" ng-class="{'active': $ctrl.isSelected(item)}" ng-click="$ctrl.changeSelected(item)">
+          <div class="selected-point" ng-if="$ctrl.isSelected(item)"></div>
           <div class="item-title">{{item.title}}</div>
         </div>
       </div>

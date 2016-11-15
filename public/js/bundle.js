@@ -176,6 +176,15 @@ components.component('home', {
       ctrl.selectedSolution = ctrl.solutions[0];
 
       // functions
+      /*Solutions*/
+      ctrl.isSelected = function(item){
+        return (ctrl.selectedSolution == item);
+      }
+      ctrl.changeSelected = function(item){
+        ctrl.selectedSolution = item;
+      }
+
+      /*Carousel*/
       ctrl.toggleInterval = function() {
         ctrl.myInterval = (ctrl.myInterval > 0 ? 0 : 5000);
       }
