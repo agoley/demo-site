@@ -6,7 +6,10 @@
 				 src="images/dkw-logo-mobile.png"
 				 layout="column" ui-sref="app"/>
       <span flex></span>
-      <md-button class="md-icon-button" aria-label="Search">
+      <md-button 
+					  ng-click="$ctrl.toggleIsSearching()" 
+					  class="md-icon-button" 
+					  aria-label="Search">
 			<i class="fa fa-search fa-2x header-icon" aria-hidden="true"></i>
       </md-button>
       <md-button class="md-icon-button" aria-label="Menu">
@@ -14,3 +17,25 @@
 		</md-button>
    </div>
 </md-toolbar>
+<div 
+	  id="searchInput" 
+	  layout="column" 
+	  layout-padding ng-cloak>
+   <md-input-container 
+							  class="md-icon-float md-icon-right md-block"
+							  style="margin: 15px 75px 0px 15px;">
+      <!-- Use floating label instead of placeholder -->
+      <label>
+	      <i 
+      		class="fa fa-search header-icon" 
+				aria-hidden="true">
+			</i>
+			Search
+		 </label>
+       <input ng-model="$ctrl.query" type="text">
+		 <md-icon 
+					 ng-click="$ctrl.toggleIsSearching()"
+					 class="closeSearchBtn"
+					 md-font-set="fa"> &#xf00d </md-icon>
+   </md-input-container>
+</div>

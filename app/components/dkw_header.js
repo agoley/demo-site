@@ -3,6 +3,7 @@ components.component('dkwHeader', {
    bindings: {},
 	controller: function () {
       var ctrl = this;
+		ctrl.isSearching = false;
 		
 		// set header logo to mobile
 		var configHeaderForMobile = function () {
@@ -30,6 +31,10 @@ components.component('dkwHeader', {
 		window.onresize = function(){
     		configHeader();
 		};
+		
+		ctrl.toggleIsSearching = function () {
+			$("#searchInput").slideToggle( "slow");
+		}
 		
    },
    templateUrl: 'views/dkw_header.html'
