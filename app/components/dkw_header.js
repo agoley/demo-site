@@ -31,7 +31,7 @@ components.component('dkwHeader', {
       	var timer;
 
       	return function debounced() {
-        		var context = $scope,
+        		var context = this,
             args = Array.prototype.slice.call(arguments);
         		$timeout.cancel(timer);
         		timer = $timeout(function() {
