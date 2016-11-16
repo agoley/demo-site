@@ -12,11 +12,43 @@
 					  aria-label="Search">
 			<i class="fa fa-search fa-2x header-icon" aria-hidden="true"></i>
       </md-button>
-      <md-button class="md-icon-button" aria-label="Menu">
+		<md-button ng-click="$ctrl.toggleRight()"
+            ng-hide="$ctrl.isOpenRight()"
+            class="md-icon-button">
          <i class="fa fa-bars fa-2x header-icon" aria-hidden="true"></i>
-		</md-button>
+          </md-button>
    </div>
 </md-toolbar>
+
+<md-sidenav 
+				class="md-sidenav-right md-whiteframe-4dp dkw-menu" 
+				md-component-id="right">
+	<md-toolbar class="md-primary">
+		<h1 class="md-toolbar-tools menu-header">Main
+			<md-icon 
+					 ng-click="$ctrl.close()"
+					 style="color: white; padding: 5px 0px 0px 170px"
+					 md-font-set="fa"> &#xf00d </md-icon>
+		</h1>
+   </md-toolbar>
+	<md-content layout-padding class="dkw-menu">
+		<md-list>
+			<md-list-item 
+						  class="md-2-line" 
+						  ng-repeat="item in $ctrl.menu"
+						  ng-click="$ctrl.close()">
+				<div class="md-list-item-text">
+					<h3>{{item.name}}</h3>
+        		</div>
+				<md-icon md-font-set="fa" class="menu-chevron">
+				  	&#xf054 
+				</md-icon>
+        	<md-divider ng-if="!$last"></md-divider>
+			</md-list-item>
+		</md-list>
+	</md-content>
+</md-sidenav>
+
 <div 
 	  id="searchInput" 
 	  layout="column" 
