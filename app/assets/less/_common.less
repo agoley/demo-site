@@ -7,6 +7,7 @@
 
 /*Theme Color*/
 @theme-color: rgba(17,61,113,1);
+@theme-fade-color: rgba(17,61,113,0.5);
 
 * {
   margin: 0;
@@ -29,12 +30,17 @@ html, body {
 	/* equal to footer height */
    margin-bottom: -200px;
    background-color: white;
+   &::after {
+      content: "";
+      display: block;
+   }
+
+   .mainBody {     
+     background-color: rgba(255,255,255,1);
+   }
 }
 
-.page-wrap:after {
-   content: "";
-   display: block;
-}
+//.page-wrap
 
 .dkw-footer, .page-wrap:after {
    height: 200px;
@@ -73,7 +79,7 @@ html, body {
 .dkw-menu-option {
 	color: white;
 	ont-size: 150%;
-	
+
 }
 
 .closeMenuBtn {

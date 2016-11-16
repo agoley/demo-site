@@ -1,11 +1,19 @@
-@carosel-height: 600px;
-@mobile-height: 300px;
 
 .page-container {
   section {
+    border-bottom: 10px solid @theme-color;
+    position: relative;
+    .section-title {
+      position: absolute;
+      top: 30px;
+      left: 12.7%;
+      font-size: 1.3rem;
+    }
     &.dkw-carousel {
+      @carosel-height: 600px;
+      @mobile-height: 300px;
+
       height: @carosel-height;
-      position: relative;
       overflow: hidden;
       @media @tablet-screen, @mobile-screen { height: @mobile-height;}
       .carousel {
@@ -87,15 +95,20 @@
     }
 
     &.dkw-solutions {
+      @solutions-height: 400px;
+      @mobile-height: 500px;
+      background-color: rgba(250,250,250,1);
+
       .selected-solution {
-        height: 400px;
+        height: @solutions-height;
         padding: 60px 12% 40px 12%;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(150,150,150,1);
+        border-bottom: 1px solid rgba(150,150,150,1);
         display: block;
-        background-color: rgba(240,240,240,0.8);
+        background-color: rgba(220,220,220,0.8);
         z-index: 1;
+        @media @tablet-screen, @mobile-screen { height: @mobile-height;}
         .solutions-title {
           position: absolute;
           top: 30px;
@@ -104,18 +117,18 @@
         }
 
         .selected-container {
-          height: 400px;
+          height: @solutions-height;
           overflow: hidden;
           display: inline-block;
           width: 100%;
           -webkit-animation: bounceInRight 2s;
           animation: bounceInRight 2s;
+          @media @tablet-screen, @mobile-screen { height: @mobile-height;}
           .selected-img {
             display: inline-block;
             width: 39%;
             padding: 10px;
-
-            @media @tablet-screen, @mobile-screen { display: block; width: 100%; }
+            @media @tablet-screen, @mobile-screen { display: none; width: 100%; }
           }
           .selected-content {
             padding: 10px;
@@ -125,7 +138,11 @@
 
             .selected-title { font-size: 2.2rem; margin-bottom: 20px; color: @theme-color; font-weight: bold; }
             .selected-text { font-size: 1.2rem; margin-bottom: 20px;}
-
+            button {
+              font-weight: bold;
+              padding: 0 10px;
+              &:hover { background-color: rgba(255,255,255,1); color: @theme-color; }
+            }
             @media @tablet-screen, @mobile-screen {
               display: block;
               width: 100%;
@@ -137,27 +154,43 @@
       }
       .all-solutions {
         height: 75px;
-        border: 1px solid rgba(150,150,150,1);
+        border-top: 1px solid rgba(150,150,150,1);
         display: block;
         position: relative;
         z-index: 2;
+        background-color: rgba(250,250,250,1);
+
+        @media @tablet-screen, @mobile-screen { height: 105px;}
+        .mobile-directions {
+          text-align: center;
+          background-color: @theme-fade-color;
+          font-size: 1rem;
+          font-weight: bold;
+          display: none;
+          padding: 4px;
+          color: rgba(255,255,255,1);
+          @media @tablet-screen, @mobile-screen { display: block;}
+        }
         .solutions-container {
           height: 100%;
           text-align: center;
           @media @tablet-screen, @mobile-screen {
             overflow-x: auto;
+            overflow-y: hidden;
             white-space:nowrap;
+            height: 75px;
           }
           .solution-item {
             height: 100%;
             display: inline-block;
-            width: 32%;
+            width: 33.33%;
             text-align: center;
             position: relative;
             transition: 0.7s all ease-in-out;
-            //overflow: hidden;
+            &:hover { background-color: rgba(255,255,255,1);}
+
             &+.solution-item { border-left: 1px solid rgba(150,150,150,1);}
-            @media @tablet-screen, @mobile-screen {  width: 200px; white-space: normal; }
+            @media @tablet-screen, @mobile-screen {  width: 200px; white-space: normal; height: 75px; }
             .selected-point {
               height: 20px;
               width: 20px;
@@ -191,6 +224,85 @@
             }
           }
         }
+      }
+    }
+
+    /*News*/
+    &.dkw-news { height: 500px;}
+    /*Key Clients*/
+    &.dkw-key-clients {
+      height: 400px;
+      padding: 60px 0 40px;
+      .client-container {
+        width: 100%;
+        height: 250px;
+        position: relative;
+        border-top: 1px solid rgba(150,150,150,1);
+        border-bottom: 1px solid rgba(150,150,150,1);
+        margin-top: 30px;
+        padding: 0px 10px;
+        overflow: hidden;
+
+        @media @tablet-screen, @mobile-screen {
+          overflow-x: auto;
+          overflow-y: hidden;
+          white-space:nowrap;
+          height: 100px;
+        }
+        .client-item {
+          height: 75px;
+          overflow: hidden;
+          border: 2px solid rgba(240,240,240,1);
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.9;
+          z-index: 2;
+          &:hover { z-index: 10; opacity:1;}
+          @media @tablet-screen, @mobile-screen {
+            white-space: normal;
+            display: inline-block;
+            padding: 10px;
+            position: relative !important;
+            border: none;
+            height: 100px;
+            &+.client-item { margin-left: 10px;}
+          }
+          img { height: 100%; }
+        }
+      }
+      .mobile-directions {
+        text-align: center;
+        background-color: @theme-fade-color;
+        font-size: 1rem;
+        font-weight: bold;
+        display: none;
+        padding: 4px;
+        color: rgba(255,255,255,1);
+        @media @tablet-screen, @mobile-screen { display: block;}
+      }
+    }
+    /*Paralax Images*/
+    &.parallax-img {
+      height: 450px;
+      width: 100%;
+      z-index:0;
+      top:0;
+      left: 0;
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      //background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      //position: absolute;
+      opacity: 1;
+
+      @media @tablet-screen, @mobile-screen {
+        height: 300px;
+        //background-size: contain;
+        background-attachment: inherit;
+        background-position: inherit;
+        width: 100%;
       }
     }
   }
