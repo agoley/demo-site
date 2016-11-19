@@ -57,12 +57,13 @@
                 font-size: 3rem;
                 font-weight: bold;
                 margin-bottom: 20px;
-                animation: bounceInDown 2s;
+                //animation: bounceInDown 2s;
+                animation: slideInDown 3.5s;
                 @media @tablet-screen, @mobile-screen { font-size: 1.5rem; }
               }
               .caption-text {
                 font-size: 1.5rem;
-                animation: bounceInLeft 3s;
+                animation: slideInLeft 3s;
                 @media @tablet-screen, @mobile-screen {  font-size: 1rem; }
               }
             }
@@ -232,7 +233,7 @@
     /*Key Clients*/
     &.dkw-key-clients {
       height: 400px;
-      padding: 60px 0 40px;
+      padding: 60px 12% 40px;
       .client-container {
         width: 100%;
         height: 250px;
@@ -240,34 +241,31 @@
         border-top: 1px solid rgba(150,150,150,1);
         border-bottom: 1px solid rgba(150,150,150,1);
         margin-top: 30px;
-        padding: 0px 10px;
-        overflow: hidden;
+        padding: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space:nowrap;
+        height: 150px;
 
-        @media @tablet-screen, @mobile-screen {
-          overflow-x: auto;
-          overflow-y: hidden;
-          white-space:nowrap;
-          height: 100px;
-        }
+        @media @tablet-screen, @mobile-screen {  }
+
         .client-item {
           height: 75px;
           overflow: hidden;
           border: 2px solid rgba(240,240,240,1);
-          position: absolute;
-          top: 0;
-          left: 0;
           opacity: 0.9;
           z-index: 2;
+
+          white-space: normal;
+          display: inline-block;
+          padding: 10px;
+          position: relative;
+          border: none;
+          height: 100px;
+          &+.client-item { margin-left: 10px;}
+
           &:hover { z-index: 10; opacity:1;}
-          @media @tablet-screen, @mobile-screen {
-            white-space: normal;
-            display: inline-block;
-            padding: 10px;
-            position: relative !important;
-            border: none;
-            height: 100px;
-            &+.client-item { margin-left: 10px;}
-          }
+          @media @tablet-screen, @mobile-screen { }
           img { height: 100%; }
         }
       }
