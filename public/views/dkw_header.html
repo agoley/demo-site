@@ -7,6 +7,7 @@
 				 layout="column" ui-sref="app"/>
       <span flex></span>
       <md-button 
+					  ng-if="!$ctrl.isOpenRight()"
 					  ng-click="$ctrl.toggleIsSearching()" 
 					  class="md-icon-button" 
 					  aria-label="Search">
@@ -22,28 +23,49 @@
 
 <md-sidenav 
 				class="md-sidenav-right md-whiteframe-4dp dkw-menu" 
-				md-component-id="right">
-	<md-toolbar class="md-primary">
-		<h1 class="md-toolbar-tools menu-header">Main
+				md-component-id="right"
+				md-disable-backdrop="true">
+	<md-toolbar class="md-primary menu-header">
+		<h1 class="md-toolbar-tools menu-title">
+			{{$ctrl.menu.title}}
+			<div flex></div>
 			<md-icon 
 					 ng-click="$ctrl.close()"
-					 style="color: white; padding: 5px 0px 0px 170px"
+					 style="color: white;"
 					 md-font-set="fa"> &#xf00d </md-icon>
 		</h1>
    </md-toolbar>
-	<md-content layout-padding class="dkw-menu">
-		<md-list>
+	<md-content>
+		<md-list id="dkwMenuList" class="menu-content" ng-animate-swap="$ctrl.menu">
 			<md-list-item 
-						  class="md-2-line" 
-						  ng-repeat="item in $ctrl.menu"
-						  ng-click="$ctrl.close()">
-				<div class="md-list-item-text">
-					<h3>{{item.name}}</h3>
+							  ng-if="$ctrl.menu.title !== 'Main'"
+							  class="md-2-line back-btn" 
+							  ng-click="$ctrl.onMenuBackClick()">
+				<md-icon md-font-set="fa" class="back-chevron">
+				  	&#xf053 
+				</md-icon>
+				<div flex></div>
+				<div style="text-align: right">
+					<h4> {{$ctrl.menu.backMenuTitle}} </h4>
         		</div>
-				<md-icon md-font-set="fa" class="menu-chevron">
+				<md-divider></md-divider>
+			</md-list-item>
+			
+			<md-list-item 
+							  class="md-2-line" 
+							  ng-repeat="item in $ctrl.menu.sections"
+							  ng-click="$ctrl.onMenuItemClick(item)">
+				<md-list-item ng-if="item.type !== 'submenu'" class="menu-link">
+					<h5><a ui-sref="{{item.state}}">{{item.name}}</a></h5>
+				</md-list-item>
+				<div>
+					<h5 class="submenu-title" ng-if="item.type === 'submenu'">{{item.name}}</h5>
+        		</div>
+				<div flex></div>
+				<md-icon md-font-set="fa" ng-if="item.type === 'submenu'" class="menu-chevron">
 				  	&#xf054 
 				</md-icon>
-        	<md-divider ng-if="!$last"></md-divider>
+				<md-divider></md-divider>
 			</md-list-item>
 		</md-list>
 	</md-content>

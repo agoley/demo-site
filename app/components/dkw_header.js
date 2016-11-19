@@ -7,16 +7,385 @@ components.component('dkwHeader', {
       var ctrl = this;
 		ctrl.isSearching = false;
 		ctrl.menu;
-		var mainMenu = [
-			{name:'Our Company'},
-			{name:'Our Solutions'},
-			{name:'Qaulity Managment'},
-			{name:'Contract Vehicles'},
-			{name:'News'},
-			{name:'Careers'},
-			{name:'Contact'}
-		];
-		ctrl.menu = mainMenu;
+		
+		ctrl.ourCompanyMenu = {
+			title: 'Our Company',
+			backMenuTitle: 'Main', 
+			sections: [
+			{
+				name:'Company History',
+				state:'app'
+			},
+			{
+				name:'Message from the President',
+				state:'app.about.messageFromPresident'
+			},
+			{
+				name:'Senior Managment Team',
+				state:'app'
+			},
+			{
+				name:'Carol Inman Glover – Dedication',
+				state:'app'
+			}]
+		};
+		
+		ctrl.enterpriseNetCentricSolutionsMenu = {
+			title: 'Enterprise Net-Centric Solutions',
+			backMenuTitle: 'Our Solutions', 
+			sections: [
+				{
+					name:'About Enterprise Net-Centric Solutions',
+					state:'app.solutions.netCentricSolutions'
+				},
+				{
+					name:'IT Service Management',
+					state:'app'
+				},
+				{
+					name:'Mobile Solutions',
+					state:'app'
+				},
+				{
+					name:'Application Development',
+					state:'app'
+				},
+				{
+					name:'Operations and Maintenance',
+					state:'app'
+				},
+				{
+					name:'IV&V',
+					state:'app'
+				},
+				{
+					name:'Service Desk',
+					state:'app'
+				},
+				{
+					name:'CSISR',
+					state:'app'
+				},
+				{
+					name:'Disabilty Accomodations',
+					state:'app'
+				},
+				{
+					name:'Systems Engineering',
+					state:'app'
+				},
+				{
+					name:'Healthcare IT',
+					state:'app'
+				},
+				{
+					name:'Datacenter Support',
+					state:'app'
+				}
+			]
+		};
+		
+		ctrl.contractVehiclesMenu = {
+			title: 'Contract Vehicles',
+			backMenuTitle: 'Main', 
+			sections: [
+				{
+					name:'SeaPort-E',
+					type: 'submenu',
+					submenu: "seaPortEMenu"
+				},
+				{
+					name:'Alliant Small Business Governmentwide Acquisition Contract (GWAC)',
+					state:'app'
+				},
+				{
+					name:'8(a) STARS II Governmentwide Acquisition Contract (GWAC)',
+					state:'app'
+				},
+				{
+					name:'DHS EAGLE II INDEFINITE-DELIVERY, INDEFINITE-QUANTITY (IDIQ) HSHQDC-13-D-E2064',
+					state:'app'
+				},
+				{
+					name:'Operations and Maintenance',
+					state:'app'}
+				,
+				{
+					name:'GSA IT Schedule70 GS-35F-0704N',
+					state:'app'
+				},
+				{
+					name:'IRS TIPSS-4 SB Cyber and MBOSS',
+					state:'app'
+				},
+				{
+					name:'SPAWAR PILLARS (BFS, ICO, TCI)',
+					state:'app'
+				},
+				{
+					name:'NAVSEA Seaport-e Zone 1-7',
+					state:'app'
+				},
+				{
+					name:'FAA eFAST DTFAWA10A-00025',
+					state:'app'
+				},
+				{
+					name:'OPM IT Services BPA (OPM-32-12-A-0036)',
+					state:'app'
+				}
+			]
+		}
+		
+		ctrl.cyberSecurityIntelligenceServiceMenu = {
+			title: 'Cyber Security and Intelligence Service',
+			backMenuTitle: 'Our Solutions', 
+			sections: [
+				{
+					name:'Compliance and C&A',
+					state:'app'
+				},
+				{
+					name:'COOP/Disaster Recovery',
+					state:'app'
+				},
+				{
+					name:'Identity Access Management',
+					state:'app'
+				},
+				{
+					name:'Information Assurance',
+					state:'app'
+				}
+			]
+		};
+		
+		ctrl.managementConsultingMenu = {
+			title: 'Management Consulting',
+			backMenuTitle: 'Our Solutions', 
+			sections: [
+				{
+					name:'Acquisition Support',
+					state:'app'
+				},
+				{
+					name:'Business Process Reengineering',
+					state:'app'
+				},
+				{
+					name:'Change Management',
+					state:'app'
+				},
+				{
+					name:'IElectronic Records Management',
+					state:'app'
+				},
+				{
+					name:'Human Resources',
+					state:'app'
+				},
+				{
+					name:'Information Management',
+					state:'app'
+				},
+				{
+					name:"Program Management",
+					state:'app'
+				}
+			]
+		}
+		
+		ctrl.seaPortEMenu = {
+			title: 'SeaPort-E',
+			backMenuTitle: 'Contract Vehicles', 
+			sections: [
+				{
+					name:'About SeaPort-E & DKW',
+					state:'app'
+				},
+				{
+					name:'Points Of Contact',
+					state:'app'
+				},
+				{
+					name:'Team Members',
+					state:'app'
+				},
+				{
+					name:'Task Orders',
+					state:'app'
+				},
+				{
+					name:'Bids & Awards',
+					state:'app'
+				},
+				{
+					name:'Active RFPs',
+					state:'app'
+				},
+				{
+					name:'Quality Assurance',
+					state:'app'
+				},
+				{
+					name:'Functional Areas',
+					state:'app'
+				}
+			]
+		}
+		
+		ctrl.ourSolutionsMenu = {
+			title: 'Our Solutions',
+			backMenuTitle: 'Main', 
+			sections: [
+				{
+					name:'Enterprise Net-Centric Solutions',
+					type: 'submenu',
+					submenu: "enterpriseNetCentricSolutionsMenu"
+				},
+				{	
+					name:'Cyber Security and Intelligence Service',
+					type: 'submenu',
+					submenu: 'cyberSecurityIntelligenceServiceMenu'
+				},
+				{
+					name:'Management Consulting',
+					type: 'submenu',
+					submenu: 'managementConsultingMenu'
+				},
+			]
+		};
+		
+		ctrl.newsMenu = {
+			title: 'News',
+			backMenuTitle: 'Main', 
+			sections: [
+				{name:'Recent Activity',
+				state:'app'},
+				{name:'Community',
+				state:'app'},
+				{name:'Awards',
+				state:'app'}
+			]
+		};
+		
+		ctrl.careersMenu = {
+			title: 'Careers',
+			backMenuTitle: 'Main', 
+			sections: [
+				{name:'About DKW',
+				state:'app'},
+				{name:'Job Oppertunities',
+				state:'app'}
+			]
+		};
+		
+		ctrl.contactMenu = {
+			title: 'Contact',
+			backMenuTitle: 'Main', 
+			sections: [
+				{name:'Contact Us',
+				state:'app'},
+				{name:'E-Verify',
+				state:'app'}
+			]
+		};
+		
+		ctrl.mainMenu = {
+			title: 'Main',
+			sections: [
+			{
+				name: 'Home',
+				state: 'app'
+			},
+			{
+				name: 'Our Company',
+				type: 'submenu',
+				submenu: "ourCompanyMenu"
+			},
+			{
+				name:'Our Solutions',
+				type: 'submenu',
+				submenu: "ourSolutionsMenu"
+			},
+			{name:'Qaulity Managment',
+				state:'app'},
+			{
+				name:'Contract Vehicles',
+				type: 'submenu',
+				submenu: "contractVehiclesMenu"
+			},
+			{
+				name:'News',
+				type:'submenu',
+				submenu: 'newsMenu'
+			},
+			{
+				name:'Careers',
+				type:'submenu',
+				submenu: 'careersMenu'
+			},
+			{
+				name:'Contact',
+				type:'submenu',
+				submenu: 'contactMenu'
+			}]
+		};
+		
+		ctrl.menu = ctrl.mainMenu;
+		
+		ctrl.onMenuBackClick = function () {
+			switch (ctrl.menu.backMenuTitle) {
+				case 'Our Solutions':
+					ctrl.menu = ctrl.ourSolutionsMenu;
+					break;
+				case 'Contract Vehicles':
+					ctrl.menu = ctrl.contractVehiclesMenu;
+					break;
+				default:
+					ctrl.menu = ctrl.mainMenu;
+					break;
+			}
+		}
+		ctrl.onMenuItemClick = function (item) {
+			if (item.type === 'submenu') {
+				switch (item.submenu) {
+					case 'ourCompanyMenu':
+						ctrl.menu = ctrl.ourCompanyMenu;
+						break;
+					case 'ourSolutionsMenu':
+						ctrl.menu = ctrl.ourSolutionsMenu;
+						break;
+					case 'enterpriseNetCentricSolutionsMenu':
+						ctrl.menu = ctrl.enterpriseNetCentricSolutionsMenu;
+						break;
+					case 'cyberSecurityIntelligenceServiceMenu':
+						ctrl.menu = ctrl.cyberSecurityIntelligenceServiceMenu;
+						break;
+					case 'managementConsultingMenu':
+						ctrl.menu = ctrl.managementConsultingMenu;
+						break;
+					case 'contractVehiclesMenu':
+						ctrl.menu = ctrl.contractVehiclesMenu;
+						break;
+					case 'seaPortEMenu':
+						ctrl.menu = ctrl.seaPortEMenu;
+						break;
+					case 'newsMenu':
+						ctrl.menu = ctrl.newsMenu;
+						break;
+					case 'careersMenu':
+						ctrl.menu = ctrl.careersMenu;
+						break;
+					case 'contactMenu':
+						ctrl.menu = ctrl.contactMenu;
+						break;
+					default:
+						ctrl.menu = ctrl.mainMenu;
+						break;
+				}
+			}
+		}
 		
     	ctrl.toggleRight = buildToggler('right');
     	ctrl.isOpenRight = function(){
