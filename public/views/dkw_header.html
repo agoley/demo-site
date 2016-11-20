@@ -2,8 +2,14 @@
 <md-toolbar class="dkw-header md-primary">
    <div class="md-toolbar-tools" layout="row">
       <image
+				 ng-if="$ctrl.parent.view.isMobile"
 				 id="header-logo"
 				 src="images/dkw-logo-mobile.png"
+				 layout="column" ui-sref="app"/>
+		<image
+				 ng-if="!$ctrl.parent.view.isMobile"
+				 id="header-logo"
+				 src="images/dkw-logo.png"
 				 layout="column" ui-sref="app"/>
       <span flex></span>
       <md-button 

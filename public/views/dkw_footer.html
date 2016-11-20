@@ -1,13 +1,22 @@
 <!-- template for the dkw_footer -->
-<div class="dkw-footer">
+<div ng-if="$ctrl.parent.view.isMobile" class="dkw-footer">
+	<div layout="row" style="margin: auto">
+		<i class="fa fa-facebook" aria-hidden="true"></i>
+		<i class="fa fa-twitter" aria-hidden="true"></i>
+		<i class="fa fa-instagram" aria-hidden="true"></i>
+	</div>
+	<div class="footer-footer" style="text-align: center">
+		DKW COMMUNICATIONS, INC. © COPYRIGHT 2014 | WEBSITE DEVELOPED BY DJW Productions.
+	</div>
+</div>
+<div ng-if="!$ctrl.parent.view.isMobile" class="dkw-footer">
 	<div layout="row" class="center">
 	   <div layout="column" class="col">
 		   <h5>Quick Links</h5>
 			<a ui-sref="app">Home</a>
 			<a ui-sref="app">About Us</a>
 			<a ui-sref="app">Contract Vehicles</a>
-			<a ui-sref="app.about.messageFromPresident">Message From The President</a> 
-			<a ui-sref="app.solutions.netCentricSolutions">Enterprise Net-Centric Solutions</a>
+			<a ui-sref="app.solutions.netCentricSolutions">Solutions</a>
 		</div>
 		<div layout="column" class="col-mid">
 			<h5>Partners & Initiatives</h5>
@@ -18,7 +27,7 @@
 		<div layout="column" class="col-mid">
 			<h5>Recent News</h5>
 			<a ui-sref="app">
-				DKW is now certified as a Local 
+				DKW is Now Certified as a Local 
 				Disadvantaged Business Enterprise
 			</a>
 			<a ui-sref="app">
@@ -29,7 +38,7 @@
 		<div layout="column" class="col-mid">
 			<h5>Contact Us</h5>
 			<a ui-sref="app">
-				Address: 2001 L Street N.W. Suite 800
+				Address: 2001 L Street N.W. DC, Suite 800
 			</a>
 			<a ui-sref="app">
 				Phone: (202) 355-7400
@@ -45,6 +54,6 @@
 		</div>
 	</div>
 	<div class="footer-footer" style="text-align: center">
-		DKW COMMUNICATIONS, INC. © COPYRIGHT 2014 | 2001 L STREET N.W. SUITE 800 WASHINGTON, DC, 20036 | WEBSITE DEVELOPED BY DJW Productions. ALL RIGHTS RESERVED.
+		DKW COMMUNICATIONS, INC. © COPYRIGHT 2014 | 2001 L STREET, N.W. SUITE 800, WASHINGTON, DC, 20036 | WEBSITE DEVELOPED BY DJW Productions. ALL RIGHTS RESERVED.
 	</div>
 </div>

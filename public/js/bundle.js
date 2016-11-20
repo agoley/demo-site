@@ -97,6 +97,32 @@ components.component('all', {
 	controller: function () {
       var ctrl = this;
 		ctrl.view = {};
+		ctrl.view.isMobile = false;
+		
+		// set mobile to true
+		var configForMobile = function () {
+			ctrl.view.isMobile = true;
+		}
+		
+		// set mobile to false
+		var configForDesktop = function () {
+			ctrl.view.isMobile = false;
+		}
+		
+		// logic to configure the site for mobile oe desktop
+		var configView = function () {
+			if (window.innerWidth < 715) {
+				configForMobile();
+			} else {
+				configForDesktop();
+			}
+		}
+		
+		configView();
+		
+		window.onresize = function(){
+    		configView();
+		};
    },
    templateUrl: 'views/all.html'
 });
@@ -104,6 +130,9 @@ components.component('all', {
 // footer component for DKWSite
 components.component('dkwFooter', {
    bindings: {},
+	require: {
+      parent: '^all'
+    },
 	controller: function () {
       var ctrl = this;
    },
@@ -115,6 +144,9 @@ components.component('dkwFooter', {
 // header component for DKWSite
 components.component('dkwHeader', {
    bindings: {},
+	require: {
+      parent: '^all'
+    },
 	controller: function ($timeout, $mdSidenav, $log) {
       var ctrl = this;
 		ctrl.isSearching = false;
@@ -558,33 +590,6 @@ components.component('dkwHeader', {
 					$log.debug("close RIGHT is done");
         	});
     	};
-		
-		// set header logo to mobile
-		var configHeaderForMobile = function () {
-			document.getElementById("header-logo")
-				.src="images/dkw-logo-mobile.png";
-		}
-		
-		// set header logo to desktop
-		var configHeaderForDesktop = function () {
-			document.getElementById("header-logo")
-				.src="images/dkw-logo.png";
-		}
-		
-		// logic to configure the header for mobile oe desktop
-		var configHeader = function () {
-			if (window.innerWidth < 715) {
-				configHeaderForMobile();
-			} else {
-				configHeaderForDesktop();
-			}
-		}
-		
-		configHeader();
-		
-		window.onresize = function(){
-    		configHeader();
-		};
 		
 		ctrl.toggleIsSearching = function () {
 			$("#searchInput").slideToggle( "slow");
