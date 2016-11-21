@@ -29,7 +29,9 @@ components.component('all', {
 		configView();
 		
 		window.onresize = function(){
-    		configView();
+    		setTimeout(function(){
+				configView(); 
+			}, 500);
 		};
    },
    templateUrl: 'views/all.html'
