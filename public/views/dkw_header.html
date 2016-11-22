@@ -1,3 +1,4 @@
+<md-nav-bar>
 <!-- template for the dkw_header -->
 <md-toolbar class="dkw-header md-primary">
    <div class="md-toolbar-tools" layout="row">
@@ -12,10 +13,10 @@
 				 src="images/dkw-logo.png"
 				 layout="column" ui-sref="app"/>
       <span flex></span>
-      <md-button 
+      <md-button
 					  ng-if="!$ctrl.isOpenRight()"
-					  ng-click="$ctrl.toggleIsSearching()" 
-					  class="md-icon-button" 
+					  ng-click="$ctrl.toggleIsSearching()"
+					  class="md-icon-button"
 					  aria-label="Search">
 			<i class="fa fa-search fa-2x header-icon" aria-hidden="true"></i>
       </md-button>
@@ -27,15 +28,15 @@
    </div>
 </md-toolbar>
 
-<md-sidenav 
-				class="md-sidenav-right md-whiteframe-4dp dkw-menu" 
+<md-sidenav
+				class="md-sidenav-right md-whiteframe-4dp dkw-menu"
 				md-component-id="right"
 				md-disable-backdrop="true">
 	<md-toolbar class="md-primary menu-header">
 		<h1 class="md-toolbar-tools menu-title">
 			{{$ctrl.menu.title}}
 			<div flex></div>
-			<md-icon 
+			<md-icon
 					 ng-click="$ctrl.close()"
 					 style="color: white;"
 					 md-font-set="fa"> &#xf00d </md-icon>
@@ -43,12 +44,12 @@
    </md-toolbar>
 	<md-content>
 		<md-list id="dkwMenuList" class="menu-content" ng-animate-swap="$ctrl.menu">
-			<md-list-item 
+			<md-list-item
 							  ng-if="$ctrl.menu.title !== 'Main'"
-							  class="md-2-line back-btn" 
+							  class="md-2-line back-btn"
 							  ng-click="$ctrl.onMenuBackClick()">
 				<md-icon md-font-set="fa" class="back-chevron" style="color: white">
-				  	&#xf053 
+				  	&#xf053
 				</md-icon>
 				<div flex></div>
 				<div style="text-align: right">
@@ -56,9 +57,9 @@
         		</div>
 				<md-divider></md-divider>
 			</md-list-item>
-			
-			<md-list-item 
-							  class="md-2-line" 
+
+			<md-list-item
+							  class="md-2-line"
 							  ng-repeat="item in $ctrl.menu.sections"
 							  ng-click="$ctrl.onMenuItemClick(item)">
 				<md-list-item ng-if="item.type !== 'submenu'" class="menu-link">
@@ -69,7 +70,7 @@
         		</div>
 				<div flex></div>
 				<md-icon md-font-set="fa" ng-if="item.type === 'submenu'" class="menu-chevron">
-				  	&#xf054 
+				  	&#xf054
 				</md-icon>
 				<md-divider></md-divider>
 			</md-list-item>
@@ -77,25 +78,26 @@
 	</md-content>
 </md-sidenav>
 
-<div 
-	  id="searchInput" 
-	  layout="column" 
+<div
+	  id="searchInput"
+	  layout="column"
 	  layout-padding ng-cloak>
-   <md-input-container 
+   <md-input-container
 							  class="md-icon-float md-icon-right md-block"
 							  style="margin: 15px 75px 0px 15px;">
       <!-- Use floating label instead of placeholder -->
       <label>
-	      <i 
-      		class="fa fa-search header-icon" 
+	      <i
+      		class="fa fa-search header-icon"
 				aria-hidden="true">
 			</i>
 			Search
 		 </label>
        <input ng-model="$ctrl.query" type="text">
-		 <md-icon 
+		 <md-icon
 					 ng-click="$ctrl.toggleIsSearching()"
 					 class="closeSearchBtn"
 					 md-font-set="fa"> &#xf00d </md-icon>
    </md-input-container>
 </div>
+</md-nav-bar>
