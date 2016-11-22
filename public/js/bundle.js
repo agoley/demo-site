@@ -77,7 +77,7 @@ dkwSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', func
         views: {}
       })
       .state('app.solutions.netCentricSolutions', {
-        url: "/net-centric-solutions",
+        url: "/net-centric-solutions/:Id",
         views: {
           'content@': {
             //templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'
@@ -153,10 +153,10 @@ components.component('dkwHeader', {
       var ctrl = this;
 		ctrl.isSearching = false;
 		ctrl.menu;
-		
+
 		ctrl.ourCompanyMenu = {
 			title: 'Our Company',
-			backMenuTitle: 'Main', 
+			backMenuTitle: 'Main',
 			sections: [
 			{
 				name:'Company History',
@@ -175,10 +175,10 @@ components.component('dkwHeader', {
 				state:'app'
 			}]
 		};
-		
+
 		ctrl.enterpriseNetCentricSolutionsMenu = {
 			title: 'Enterprise Net-Centric Solutions',
-			backMenuTitle: 'Our Solutions', 
+			backMenuTitle: 'Our Solutions',
 			sections: [
 				{
 					name:'About Enterprise Net-Centric Solutions',
@@ -186,11 +186,11 @@ components.component('dkwHeader', {
 				},
 				{
 					name:'IT Service Management',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "it-service-management" })'
 				},
 				{
 					name:'Mobile Solutions',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "mobile-solutions" })'
 				},
 				{
 					name:'Application Development',
@@ -230,10 +230,10 @@ components.component('dkwHeader', {
 				}
 			]
 		};
-		
+
 		ctrl.contractVehiclesMenu = {
 			title: 'Contract Vehicles',
-			backMenuTitle: 'Main', 
+			backMenuTitle: 'Main',
 			sections: [
 				{
 					name:'SeaPort-E',
@@ -282,10 +282,10 @@ components.component('dkwHeader', {
 				}
 			]
 		}
-		
+
 		ctrl.cyberSecurityIntelligenceServiceMenu = {
 			title: 'Cyber Security and Intelligence Service',
-			backMenuTitle: 'Our Solutions', 
+			backMenuTitle: 'Our Solutions',
 			sections: [
 				{
 					name:'Compliance and C&A',
@@ -305,10 +305,10 @@ components.component('dkwHeader', {
 				}
 			]
 		};
-		
+
 		ctrl.managementConsultingMenu = {
 			title: 'Management Consulting',
-			backMenuTitle: 'Our Solutions', 
+			backMenuTitle: 'Our Solutions',
 			sections: [
 				{
 					name:'Acquisition Support',
@@ -340,10 +340,10 @@ components.component('dkwHeader', {
 				}
 			]
 		}
-		
+
 		ctrl.seaPortEMenu = {
 			title: 'SeaPort-E',
-			backMenuTitle: 'Contract Vehicles', 
+			backMenuTitle: 'Contract Vehicles',
 			sections: [
 				{
 					name:'About SeaPort-E & DKW',
@@ -379,17 +379,17 @@ components.component('dkwHeader', {
 				}
 			]
 		}
-		
+
 		ctrl.ourSolutionsMenu = {
 			title: 'Our Solutions',
-			backMenuTitle: 'Main', 
+			backMenuTitle: 'Main',
 			sections: [
 				{
 					name:'Enterprise Net-Centric Solutions',
 					type: 'submenu',
 					submenu: "enterpriseNetCentricSolutionsMenu"
 				},
-				{	
+				{
 					name:'Cyber Security and Intelligence Service',
 					type: 'submenu',
 					submenu: 'cyberSecurityIntelligenceServiceMenu'
@@ -401,10 +401,10 @@ components.component('dkwHeader', {
 				},
 			]
 		};
-		
+
 		ctrl.newsMenu = {
 			title: 'News',
-			backMenuTitle: 'Main', 
+			backMenuTitle: 'Main',
 			sections: [
 				{name:'Recent Activity',
 				state:'app'},
@@ -414,10 +414,10 @@ components.component('dkwHeader', {
 				state:'app'}
 			]
 		};
-		
+
 		ctrl.careersMenu = {
 			title: 'Careers',
-			backMenuTitle: 'Main', 
+			backMenuTitle: 'Main',
 			sections: [
 				{name:'About DKW',
 				state:'app'},
@@ -425,10 +425,10 @@ components.component('dkwHeader', {
 				state:'app'}
 			]
 		};
-		
+
 		ctrl.contactMenu = {
 			title: 'Contact',
-			backMenuTitle: 'Main', 
+			backMenuTitle: 'Main',
 			sections: [
 				{name:'Contact Us',
 				state:'app'},
@@ -436,7 +436,7 @@ components.component('dkwHeader', {
 				state:'app'}
 			]
 		};
-		
+
 		ctrl.mainMenu = {
 			title: 'Main',
 			sections: [
@@ -477,9 +477,9 @@ components.component('dkwHeader', {
 				submenu: 'contactMenu'
 			}]
 		};
-		
+
 		ctrl.menu = ctrl.mainMenu;
-		
+
 		ctrl.onMenuBackClick = function () {
 			switch (ctrl.menu.backMenuTitle) {
 				case 'Our Solutions':
@@ -532,12 +532,12 @@ components.component('dkwHeader', {
 				}
 			}
 		}
-		
+
     	ctrl.toggleRight = buildToggler('right');
     	ctrl.isOpenRight = function(){
       	return $mdSidenav('right').isOpen();
     	};
-		
+
 		/**
      	* Supplies a function that will continue to operate until the
      	* time is up.
@@ -562,7 +562,7 @@ components.component('dkwHeader', {
      	*/
     	function buildDelayedToggler(navID) {
       	return debounce(function() {
-        	// Component lookup should always be available 
+        	// Component lookup should always be available
 			// since we are not using `ng-if`
         	$mdSidenav(navID)
 				.toggle()
@@ -574,7 +574,7 @@ components.component('dkwHeader', {
 
     	function buildToggler(navID) {
       	return function() {
-        	// Component lookup should always be available 
+        	// Component lookup should always be available
 			// since we are not using `ng-if`
         	$mdSidenav(navID)
 				.toggle()
@@ -583,20 +583,20 @@ components.component('dkwHeader', {
           	});
       	}
 		}
-		
+
 		ctrl.close = function () {
-      	// Component lookup should always be 
+      	// Component lookup should always be
 			// available since we are not using `ng-if`
       	$mdSidenav('right').close()
 				.then(function () {
 					$log.debug("close RIGHT is done");
         	});
     	};
-		
+
 		ctrl.toggleIsSearching = function () {
 			$("#searchInput").slideToggle( "slow");
 		}
-		
+
    },
    templateUrl: 'views/dkw_header.html'
 });
@@ -679,8 +679,11 @@ $scope.toggleInterval = function() {
 // footer component for DKWSite
 components.component('netCentricSolutions', {
    bindings: {},
-	controller: function () {
+	controller: function ($stateParams) {
       var ctrl = this;
+
+      var paramID = $stateParams.Id;
+      ctrl.Id = paramID.replace(/-/gi, ' ');
    },
    templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'
 });

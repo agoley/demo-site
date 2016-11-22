@@ -29,7 +29,7 @@ dkwSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', func
         views: {}
       })
       .state('app.solutions.netCentricSolutions', {
-        url: "/net-centric-solutions",
+        url: "/net-centric-solutions/:Id",
         views: {
           'content@': {
             //templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'

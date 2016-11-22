@@ -41,8 +41,6 @@
                 height: @mobile-height;
                 background-attachment: inherit;
                 background-position: inherit;
-                //background-size: contain;
-                //width: 200%;
               }
             }
             .carousel-caption {
@@ -117,10 +115,11 @@
         }
 
         .selected-container {
-          height: @solutions-height;
+          height: @solutions-height - 100;
           overflow: hidden;
           display: inline-block;
           width: 100%;
+          margin-bottom: 100px;
           -webkit-animation: bounceInRight 2s;
           animation: bounceInRight 2s;
           @media @tablet-screen, @mobile-screen { height: @mobile-height;}
@@ -246,6 +245,23 @@
         white-space:nowrap;
         height: 150px;
 
+        @media @full-screen {
+          /*Scroll Styles*/
+          &::-webkit-scrollbar-track   {
+          	background-color: rgba(250,250,250,1);
+          }
+
+          &::-webkit-scrollbar  {
+          	width: 10px;
+            background-color: rgba(10,10,10,1);
+          }
+
+          &::-webkit-scrollbar-thumb  {
+            background-color: rgba(17,61,113,0.7);//rgba(200,200,200,0.7);
+            border-right: 3px solid rgba(17,61,113,1);
+            border-left: 3px solid rgba(17,61,113,1);
+          }
+        }
         @media @tablet-screen, @mobile-screen {  }
 
         .client-item {
