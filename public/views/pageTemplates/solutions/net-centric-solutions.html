@@ -1,2 +1,17 @@
-<h1>Enterprise Net-Centric Solutions</h1>
-<p>{{$ctrl.Id}}</p>
+<div class="page-container">
+  <div class="uc-container">
+    <h1>Enterprise Net-Centric Solutions</h1>
+    <p>Page id: {{$ctrl.Id}}</p>
+
+    <div ng-if="$ctrl.selecteditem == undefined">No Page ID</div>
+    <div ng-if="$ctrl.selecteditem != undefined">
+      <div ng-if="$ctrl.selecteditem == null">No matching page item</div>
+
+      <div ng-if="$ctrl.selecteditem != null">
+        <h2>{{$ctrl.selecteditem.title}}</h2>
+        <p>{{$ctrl.selecteditem.content}}</p>
+        <!--<p ng-bind-html-unsafe="$ctrl.selecteditem.content"></p>-->
+      </div>
+    </div>
+  </div>
+</div>

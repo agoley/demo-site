@@ -23,6 +23,7 @@ var config = {
       'app/assets/libs/jquery/dist/jquery.min.js',
       'app/assets/libs/bootstrap/dist/js/bootstrap.min.js',
       'app/assets/libs/angular/angular.min.js',
+      'app/assets/libs/angular-sanitize/angular-sanitize.min.js',
       'app/assets/libs/angular-route/angular-route.min.js',
       'app/assets/libs/angular-material/angular-material.min.js',
       'app/assets/libs/angular-animate/angular-animate.min.js',

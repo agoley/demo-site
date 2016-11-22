@@ -51,39 +51,39 @@ components.component('dkwHeader', {
 				},
 				{
 					name:'Application Development',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "application-development" })'
 				},
 				{
 					name:'Operations and Maintenance',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "operations-and-maintenance" })'
 				},
 				{
 					name:'IV&V',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "iv&v" })'
 				},
 				{
 					name:'Service Desk',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "service-desk" })'
 				},
 				{
-					name:'CSISR',
-					state:'app'
+					name:'C5ISR',
+					state:'app.solutions.netCentricSolutions({Id: "c5isr" })'
 				},
 				{
-					name:'Disabilty Accomodations',
-					state:'app'
+					name:'Disabilty Accommodations',
+					state:'app.solutions.netCentricSolutions({Id: "disability-accommodations" })'
 				},
 				{
 					name:'Systems Engineering',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "systems-engineering" })'
 				},
 				{
 					name:'Healthcare IT',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "healthcare-it" })'
 				},
 				{
 					name:'Datacenter Support',
-					state:'app'
+					state:'app.solutions.netCentricSolutions({Id: "datacenter-support" })'
 				}
 			]
 		};
