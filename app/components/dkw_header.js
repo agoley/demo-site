@@ -451,7 +451,7 @@ components.component('dkwHeader', {
     	};
 
 		ctrl.toggleIsSearching = function () {
-			$("#searchInput").slideToggle( "slow");
+			$("#searchInput").slideToggle( "fast");
 		}
 
    },
