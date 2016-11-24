@@ -6,6 +6,7 @@ components.component('all', {
       var ctrl = this;
 		ctrl.view = {};
 		ctrl.view.isMobile = false;
+		ctrl.view.isSsearching = false;
 		
 		// set mobile to true
 		var configForMobile = function () {
