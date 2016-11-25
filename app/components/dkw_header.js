@@ -424,7 +424,7 @@ components.component('dkwHeader', {
         	$mdSidenav(navID)
 				.toggle()
 				.then(function () {
-					$log.debug("toggle " + navID + " is done");
+					//$log.debug("toggle " + navID + " is done");
           	});
       	}, 200);
     	}
@@ -436,7 +436,7 @@ components.component('dkwHeader', {
         	$mdSidenav(navID)
 				.toggle()
 				.then(function () {
-            	$log.debug("toggle " + navID + " is done");
+            	//$log.debug("toggle " + navID + " is done");
           	});
       	}
 		}
@@ -446,7 +446,7 @@ components.component('dkwHeader', {
 			// available since we are not using `ng-if`
       	$mdSidenav('right').close()
 				.then(function () {
-					$log.debug("close RIGHT is done");
+					//$log.debug("close RIGHT is done");
         	});
     	};
 

@@ -1,56 +1,151 @@
 <div class="page-container">
-  <!--Home Carousel-->
-  <section class="dkw-carousel">
-    <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
-      <uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
-        <div class="main-img" back-img="{{slide.image}}"></div>
-        <div class="carousel-caption">
-          <div class="caption-title">{{slide.title}}</div>
-          <div class="caption-text">{{slide.text}}</div>
-        </div>
-      </uib-slide>
-    </uib-carousel>
-  </section>
-
-  <!--Solutions-->
-  <section class="dkw-solutions">
-    <div class="selected-solution" >
-      <div class="solutions-title">Our Solutions</div>
-      <div class="selected-container" ng-animate-swap="$ctrl.selectedSolution">
-        <div class="selected-content" >
-          <div class="selected-title">{{$ctrl.selectedSolution.title}}</div>
-          <div class="selected-text">{{$ctrl.selectedSolution.content | limitTo: 250}}...</div>
-          <md-button class="md-raised">Learn More <i class="fa fa-info-circle"></i></md-button>
-        </div>
-        <img class="selected-img" ng-src="{{$ctrl.selectedSolution.image}}">
+   <!--Home Carousel-->
+   <section class="dkw-carousel">
+      <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
+         <uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
+            <div class="main-img" back-img="{{slide.image}}"></div>
+            <div class="carousel-caption">
+               <div class="caption-title">{{slide.title}}</div>
+               <div class="caption-text">{{slide.text}}</div>
+            </div>
+         </uib-slide>
+      </uib-carousel>
+   </section>
+   <!--Solutions-->
+   <section class="dkw-solutions">
+      <div class="selected-solution" >
+         <div class="solutions-title">Our Solutions</div>
+         <div class="selected-container" ng-animate-swap="$ctrl.selectedSolution">
+            <div class="selected-content" >
+               <div class="selected-title">{{$ctrl.selectedSolution.title}}</div>
+               <div class="selected-text">{{$ctrl.selectedSolution.content | limitTo: 250}}...</div>
+               <md-button class="md-raised">Learn More <i class="fa fa-info-circle"></i></md-button>
+            </div>
+            <img class="selected-img" ng-src="{{$ctrl.selectedSolution.image}}">
+         </div>
       </div>
-    </div>
-    <div class="all-solutions">
+      <div class="all-solutions">
+         <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
+         <div class="solutions-container">
+            <div class="solution-item" ng-repeat="item in $ctrl.solutions" ng-class="{'active': $ctrl.isSelected(item)}" ng-click="$ctrl.changeSelected(item)">
+               <div class="selected-point" ng-if="$ctrl.isSelected(item)"></div>
+               <div class="item-title">{{item.title}}</div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- Spacer Image -->
+   <section class="parallax-img" back-img="{{$ctrl.image1}}"></section>
+   <!--News-->
+   <section class="dkw-news">
+      <div ng-cloak>
+         <md-content class="md-padding" layout-xs="column" layout="row">
+            <div class="section-title">Recent News</div>
+            <div flex-xs flex-gt-xs="50" layout="column">
+               <md-card md-theme-watch>
+                  <md-card-title>
+                     <md-card-title-text>
+                        <span class="md-headline">DKW is now certified as a Local Disadvantaged Business Enterprise</span>
+                        <span class="md-subhead"></span>
+                     </md-card-title-text>
+                  </md-card-title>
+                  <md-card-content layout="row" layout-align="space-between">
+                     <div class="md-media-lg card-media">
+                     </div>
+                     DKW is now certified as a Local Disadvantaged Business Enterprise (LDBE) with the Metropolitan Washington Airports Authority (Authority) Expiration Date January 20, 2018
+                     <!--<md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="" aria-label="More">
+                        	<i class="fa fa-share-alt" aria-hidden="true"></i>
+                        </md-button>
+                                   </md-card-actions>-->
+                  </md-card-content>
+               </md-card>
+               <md-card md-theme-watch>
+                  <md-card-title>
+                     <md-card-title-text>
+                        <span class="md-headline">DKW Selected By the U.S. Marine Corps to Manage Eight Data Centers in San Diego, California</span>
+                        <span class="md-subhead"></span>
+                     </md-card-title-text>
+                  </md-card-title>
+                  <md-card-content layout="row" layout-align="space-between">
+                     <div class="md-media-lg card-media">
+                        <image
+                           src="images/marine-img.jpeg"
+                           style="height: 100px; width: 150px; padding-right: 15px"
+                           layout="column" ui-sref="app"/>
+                     </div>
+                     DKW was recently awarded a $4.5 million dollar contract with the U.S. Marine Corps to provide network analysis, data center planning, IT project management, network and facilities engineering, and implementation and testing of network designs for eight data centers located in San Diego, California.
+                     <!--<md-card-actions layout="column">
+                        <md-card-actions layout="row" layout-align="end center">
+                           <md-button ng-click="" aria-label="More">
+                              <i class="fa fa-share-alt" aria-hidden="true"></i>
+                           </md-button>
+                        </md-card-actions>
+                        </md-card-actions>-->
+                  </md-card-content>
+               </md-card>
+            </div>
+            <div flex-xs flex-gt-xs="50" layout="column">
+               <md-card md-theme-watch>
+                  <md-card-title>
+                     <md-card-title-text>
+                        <span class="md-headline">DKW Awarded New Contract to Provide IT Support Services to the U.S. Department of Interior</span>
+                        <span class="md-subhead"></span>
+                     </md-card-title-text>
+                     <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                     </md-card-title-media>
+                  </md-card-title>
+                  <md-card-content layout="row" layout-align="space-between">
+                     {{$ctrl.news.interiorText}}
+                  </md-card-content>
+                  <md-card-actions layout="row" layout-align="end center">
+                     <md-button ng-if="$ctrl.minStory" ng-click="$ctrl.moreNews()" aria-label="More">
+                        Show More...
+                     </md-button>
+                     <md-button ng-if="!$ctrl.minStory" ng-click="$ctrl.lessNews()" aria-label="More">
+                        Show less...
+                     </md-button>
+                  </md-card-actions>
+               </md-card>
+               <md-card md-theme-watch>
+                  <md-card-title>
+                     <md-card-title-text>
+                        <span class="md-headline">DKW Awarded $10 Million Dollar Contract to Provide Software Development Services to the United States Department of Agriculture (USDA), Food Safety and Inspection Service</span>
+                        <span class="md-subhead"></span>
+                     </md-card-title-text>
+                     <md-card-title-media>
+                        <div class="md-media-xl card-media"></div>
+                     </md-card-title-media>
+                  </md-card-title>
+                  <md-card-content layout="row" layout-align="space-between">
+                     The Unites States Department of Agriculture (USDA), Food Safety and Inspection Service (FSIS) selected DKW to provide ongoing software maintenance for its Public Health Information System (PHIS) which supports FSIS in protecting the U.S. food supply by ensuring that our commercial supply of meat, poultry, and egg products is safe, wholesome, and correctly labeled and packaged.
+                  </md-card-content>
+                  <!--<md-card-actions layout="row" layout-align="end center">
+                     <md-button ng-click="" aria-label="More">
+                     	Show more...
+                     </md-button>
+                     </md-card-actions>-->
+               </md-card>
+               <div layout layout-padding layout-align="center end" style="height:100px">
+                  <md-button ng-click="" aria-label="More">
+                     More News...
+                  </md-button>
+               </div>
+            </div>
+         </md-content>
+      </div>
+   </section>
+   <!-- Spacer Image -->
+   <section class="parallax-img" back-img="{{$ctrl.image2}}"></section>
+   <!--Key Clients-->
+   <section class="dkw-key-clients">
+      <div class="section-title">Key Clients & Certifications</div>
+      <div class="client-container">
+         <a ng-href="{{item.url}}" class="client-item" ng-repeat="item in $ctrl.keyClients"  target="_blank">
+         <img ng-src="{{item.image}}" />
+         </a>
+      </div>
       <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
-      <div class="solutions-container">
-        <div class="solution-item" ng-repeat="item in $ctrl.solutions" ng-class="{'active': $ctrl.isSelected(item)}" ng-click="$ctrl.changeSelected(item)">
-          <div class="selected-point" ng-if="$ctrl.isSelected(item)"></div>
-          <div class="item-title">{{item.title}}</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Spacer Image -->
-  <section class="parallax-img" back-img="{{$ctrl.image1}}"></section>
-  <!--News-->
-  <section class="dkw-news">
-    <div class="section-title">News</div>
-  </section>
-  <!-- Spacer Image -->
-  <section class="parallax-img" back-img="{{$ctrl.image2}}"></section>
-  <!--Key Clients-->
-  <section class="dkw-key-clients">
-    <div class="section-title">Key Clients & Certifications</div>
-    <div class="client-container">
-      <a ng-href="{{item.url}}" class="client-item" ng-repeat="item in $ctrl.keyClients"  target="_blank">
-        <img ng-src="{{item.image}}" />
-      </a>
-    </div>
-    <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
-  </section>
+   </section>
 </div>
