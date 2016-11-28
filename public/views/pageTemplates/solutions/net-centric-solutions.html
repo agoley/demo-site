@@ -1,16 +1,32 @@
 <div class="page-container">
-  <div class="uc-container">
-    <h1>Enterprise Net-Centric Solutions</h1>
-    <p>Page id: {{$ctrl.Id}}</p>
-
-    <div ng-if="$ctrl.selecteditem == undefined">No Page ID</div>
-    <div ng-if="$ctrl.selecteditem != undefined">
-      <div ng-if="$ctrl.selecteditem == null">No matching page item</div>
-
-      <div ng-if="$ctrl.selecteditem != null">
-        <h2>{{$ctrl.selecteditem.title}}</h2>
-        <p>{{$ctrl.selecteditem.content}}</p>
-        <!--<p ng-bind-html-unsafe="$ctrl.selecteditem.content"></p>-->
+  <div class="dkw-solutions-section">
+    <!--Section Header-->
+    <div class="solutions-header">
+      <div class="header-panel">
+        <div class="header-text">
+          <div class="section-title" >{{$ctrl.pageInfo.sectionTitle}}</div>
+          <div class="content-title" ng-animate-swap="$ctrl.selectedItem">{{$ctrl.selectedItem.title}}</div>
+        </div>
+        <div class="header-image" ng-animate-swap="$ctrl.selectedItem"><img ng-src="{{$ctrl.selectedItem.image}}" /></div>
+      </div>
+      <div class="header-nav">
+        <div class="nav-container">
+          <a class="nav-item home-icon" ui-sref="{{$ctrl.pageInfo.state}}" ui-sref-active="active"><i class="fa fa-home"></i></a>
+          <a class="nav-item" ng-repeat="item in $ctrl.items" ui-sref="{{item.state}}" ui-sref-active="active">{{item.title}}</a>
+        </div>
+      </div>
+    </div>
+    <!--Section Content-->
+    <div class="solution-content">
+      <div class="content-section">
+        <div class="content-items" ng-repeat="content in $ctrl.selectedItem.content" ng-animate-swap="$ctrl.selectedItem">
+          <div class="text-content" ng-if="content.type == 'text'">{{content.content}}</div>
+          <div class="list-content" ng-if="content.type == 'list'">
+            <ul>
+              <li ng-repeat="list in content.content">{{list}}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

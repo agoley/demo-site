@@ -39,7 +39,7 @@ components.component('dkwHeader', {
 			sections: [
 				{
 					name:'About Enterprise Net-Centric Solutions',
-					state:'app.solutions.netCentricSolutions'
+					state:'app.solutions.netCentricSolutions({Id:""})'
 				},
 				{
 					name:'IT Service Management',

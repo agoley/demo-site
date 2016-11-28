@@ -1,22 +1,24 @@
 .quote {
-	font-style: italic; 
+	font-style: italic;
 	font-weight: bolder;
 	color: @theme-color;
 }
 
-.president-img {
-	height: 400px; 
-	width: 275px; 
-	padding:  0 20px 20px 0;
-	@tablet-screen, @mobile-screen { 
-		padding:  0 20px 0 0;
-	}
-}
-
 .message-body {
 	margin-bottom: 60px;
-}
-
-.message-content { 
-		padding: 0 50px 0 50px;
+	.sub-theme { background-color: @theme-color2 !important; }
+	md-content {
+		.message-content {
+			padding: 0 50px 0 50px;
+			
+			.president-img {
+				height: 400px;
+				width: 275px;
+				padding:  0 20px 20px 0;
+				@tablet-screen, @mobile-screen {
+					padding:  0 20px 0 0;
+				}
+			}
+		}
+	}
 }

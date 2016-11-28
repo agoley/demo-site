@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="home-container">
    <!--Home Carousel-->
    <section class="dkw-carousel">
       <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
@@ -19,7 +19,7 @@
             <div class="selected-content" >
                <div class="selected-title">{{$ctrl.selectedSolution.title}}</div>
                <div class="selected-text">{{$ctrl.selectedSolution.content | limitTo: 250}}...</div>
-               <md-button class="md-raised">Learn More <i class="fa fa-info-circle"></i></md-button>
+               <md-button class="md-raised" ui-sref="{{$ctrl.selectedSolution.state}}">Learn More <i class="fa fa-info-circle"></i></md-button>
             </div>
             <img class="selected-img" ng-src="{{$ctrl.selectedSolution.image}}">
          </div>
