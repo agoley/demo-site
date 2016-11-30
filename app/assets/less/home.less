@@ -98,7 +98,7 @@
 
       .selected-solution {
         height: @solutions-height;
-        padding: 60px 12% 40px 12%;
+        padding: 60px 7% 40px;
         position: relative;
         overflow: hidden;
         border-bottom: 1px solid rgba(150,150,150,1);
@@ -121,6 +121,7 @@
           margin-bottom: 100px;
           -webkit-animation: slidInRight 0.5s;
           animation: slideInRight 0.5s;
+          &.ng-leave { display: none;}
           @media @tablet-screen, @mobile-screen { height: @mobile-height;}
           .selected-img {
             display: inline-block;
@@ -135,7 +136,11 @@
             vertical-align: top;
 
             .selected-title { font-size: 2.2rem; margin-bottom: 20px; color: @theme-color; font-weight: bold; }
-            .selected-text { font-size: 1.2rem; margin-bottom: 20px;}
+            .selected-text {
+              font-size: 1.2rem;
+              margin-bottom: 20px;
+              @media @medium-screen { font-size: 1rem; }
+            }
             button {
               font-weight: bold;
               padding: 0 10px;
@@ -235,56 +240,76 @@
     &.dkw-key-clients {
       height: 400px;
       padding: 60px 7% 40px;
-      .client-container {
-        width: 100%;
-        height: 250px;
+      .clients-section {
         position: relative;
+        margin-top: 30px;
+        padding: 10px 0px;
         border-top: 1px solid rgba(150,150,150,1);
         border-bottom: 1px solid rgba(150,150,150,1);
-        margin-top: 30px;
-        padding: 10px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space:nowrap;
-        height: 150px;
-
-        @media @full-screen {
-          /*Scroll Styles*/
-          &::-webkit-scrollbar-track   {
-          	background-color: rgba(250,250,250,1);
-          }
-
-          &::-webkit-scrollbar  {
-          	width: 10px;
-            background-color: rgba(10,10,10,1);
-          }
-
-          &::-webkit-scrollbar-thumb  {
-            background-color: rgba(17,61,113,0.7);//rgba(200,200,200,0.7);
-            border-right: 3px solid rgba(17,61,113,1);
-            border-left: 3px solid rgba(17,61,113,1);
-          }
-        }
-        @media @tablet-screen, @mobile-screen {  }
-
-        .client-item {
-          height: 75px;
-          overflow: hidden;
-          border: 2px solid rgba(240,240,240,1);
-          opacity: 0.9;
-          z-index: 2;
-
-          white-space: normal;
+        height: 152px;
+        overflow: hidden;
+        i {
           display: inline-block;
-          padding: 10px;
+          font-size: 80px;
+          width: 9%;
+          vertical-align: top;
           position: relative;
-          border: none;
-          height: 100px;
-          &+.client-item { margin-left: 10px;}
+          z-index: 2;
+          @media @tablet-screen, @mobile-screen {  display: none; }
+          &::before { vertical-align: -webkit-baseline-middle;}
+          &.fa-chevron-left { text-align: left;}
+          &.fa-chevron-right { text-align: right;}
+          &.inactive { color: rgba(0,0,0,0.3); cursor: default;}
+        }
+        .client-container {
+          display: inline-block;
+          width: 80%;
+          position: relative;
+          z-index: 1;
+          padding: 10px;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          white-space:nowrap;
+          animation: fadeIn 0.5s;
+          -webkit-animation: fadeIn 0.5s;
+          &.ng-leave { display: none;}
+          @media @tablet-screen, @mobile-screen {  overflow-x: auto; width: 100%; }
+          @media @full-screen {
+            /*Scroll Styles*/
+            &::-webkit-scrollbar-track   {
+            	background-color: rgba(250,250,250,0.1);
+            }
 
-          &:hover { z-index: 10; opacity:1;}
-          @media @tablet-screen, @mobile-screen { }
-          img { height: 100%; }
+            &::-webkit-scrollbar  {
+            	width: 10px;
+              background-color: rgba(10,10,10,0.1);
+            }
+
+            &::-webkit-scrollbar-thumb  {
+              background-color: rgba(17,61,113,0.3);//rgba(200,200,200,0.7);
+              border-right: 3px solid rgba(17,61,113,0.5);
+              border-left: 3px solid rgba(17,61,113,0.5);
+            }
+          }
+          .client-item {
+            height: 75px;
+            overflow: hidden;
+            border: 2px solid rgba(240,240,240,1);
+            opacity: 0.9;
+            z-index: 2;
+
+            white-space: normal;
+            display: inline-block;
+            padding: 10px;
+            position: relative;
+            border: none;
+            height: 100px;
+            &+.client-item { margin-left: 30px;}
+            &:hover { z-index: 10; opacity:1;}
+
+            @media @tablet-screen, @mobile-screen { }
+            img { height: 100%; }
+          }
         }
       }
       .mobile-directions {

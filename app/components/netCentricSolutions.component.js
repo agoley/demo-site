@@ -1,7 +1,7 @@
 // footer component for DKWSite
 components.component('netCentricSolutions', {
    bindings: {},
-	controller: function ($stateParams, $sce) {
+	controller: function ($stateParams, $sce, $location, $anchorScroll) {
       var ctrl = this;
       ctrl.pageInfo = {
         "sectionTitle":"Enterprise Net-Centric Solutions",
@@ -31,6 +31,15 @@ components.component('netCentricSolutions', {
       ];
 
       ctrl.selectedItem = {};
+      ctrl.scrollToNav = function(title){
+        var navLoc = title.replace(/ /gi, '-');
+        //$location.hash(navLoc);
+        //$anchorScroll();
+      }
+
+      ctrl.setID = function(title){
+        return title.replace(/ /gi, '-');
+      }
 
       ctrl.getItem = function(searchId){
         var results = $.grep(ctrl.items, function(e){ return e.title.toLowerCase() == searchId.toLowerCase()});
@@ -45,11 +54,16 @@ components.component('netCentricSolutions', {
         ctrl.selectedItem = object;
         var tst =0;
       }
+      ctrl.linkIsActive = function(title){
+        return (title == ctrl.selectedItem.title);
+      }
 
       var paramID = $stateParams.Id;
       if(paramID != undefined && paramID != ""){
         ctrl.Id = paramID.replace(/-/gi, ' ');
         ctrl.getItem(ctrl.Id);
+        // Set anchor
+        ctrl.scrollToNav(ctrl.selectedItem.title);
       }
       else {
         ctrl.selectedItem = ctrl.pageInfo;

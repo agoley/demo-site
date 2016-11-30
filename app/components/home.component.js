@@ -24,24 +24,26 @@ components.component('home', {
       ctrl.image1 = "images/software1.jpg";
       ctrl.image2 = "images/businessMeeting.jpg";
 
+
       ctrl.keyClients = [
-        {"title":"Defense Information Systems Agency","image":"images/keyClients/image001.jpg","url":"http://www.disa.mil/"},
-        {"title":"Capability Maturity Model Integration","image":"images/keyClients/image01.jpg","url":""},
-        {"title":"The U.S. Department of the Treasury","image":"images/keyClients/image003.png","url":"https://www.treasury.gov/Pages/default.aspx"},
-        {"title":"The U.S. Department of Homeland Security","image":"images/keyClients/image005.jpg","url":"https://www.dhs.gov/"},
-        {"title":"","image":"images/keyClients/image007.jpg","url":""},
-        {"title":"","image":"images/keyClients/image009.jpg","url":""},
-        {"title":"","image":"images/keyClients/image011.jpg","url":""},
-        {"title":"","image":"images/keyClients/image013.jpg","url":""},
-        {"title":"","image":"images/keyClients/image015.jpg","url":""},
-        {"title":"","image":"images/keyClients/image019.jpg","url":""},
-        {"title":"","image":"images/keyClients/image021.jpg","url":""},
-        {"title":"","image":"images/keyClients/image023.jpg","url":""},
-        {"title":"","image":"images/keyClients/image025.jpg","url":""},
-        {"title":"","image":"images/keyClients/image027.jpg","url":""},
-        {"title":"","image":"images/keyClients/image031.jpg","url":""},
-        {"title":"","image":"images/keyClients/image033.jpg","url":""}
+        {"id":0, "title":"Defense Information Systems Agency","image":"images/keyClients/image001.jpg","url":"http://www.disa.mil/"},
+        {"id":1, "title":"Capability Maturity Model Integration","image":"images/keyClients/image01.jpg","url":""},
+        {"id":2, "title":"The U.S. Department of the Treasury","image":"images/keyClients/image003.png","url":"https://www.treasury.gov/Pages/default.aspx"},
+        {"id":3, "title":"The U.S. Department of Homeland Security","image":"images/keyClients/image005.jpg","url":"https://www.dhs.gov/"},
+        {"id":4, "title":"","image":"images/keyClients/image007.jpg","url":""},
+        {"id":5, "title":"","image":"images/keyClients/image009.jpg","url":""},
+        {"id":6, "title":"","image":"images/keyClients/image011.jpg","url":""},
+        {"id":7, "title":"","image":"images/keyClients/image013.jpg","url":""},
+        {"id":8, "title":"","image":"images/keyClients/image015.jpg","url":""},
+        {"id":9, "title":"","image":"images/keyClients/image019.jpg","url":""},
+        {"id":10, "title":"","image":"images/keyClients/image021.jpg","url":""},
+        {"id":11, "title":"","image":"images/keyClients/image023.jpg","url":""},
+        {"id":12, "title":"","image":"images/keyClients/image025.jpg","url":""},
+        {"id":13, "title":"","image":"images/keyClients/image027.jpg","url":""},
+        {"id":14, "title":"","image":"images/keyClients/image031.jpg","url":""},
+        {"id":15, "title":"","image":"images/keyClients/image033.jpg","url":""}
       ];
+
 
 		ctrl.news = {};
 		ctrl.minStory = true;
@@ -76,6 +78,25 @@ components.component('home', {
 			ctrl.news.interiorText = ctrl.news.interiorTextSmall;
 			ctrl.minStory = true;
 		}
+    /* Key Clients*/
+    ctrl.clientCtrl = function(direction) {
+      if(direction == "left"){
+        // Move Left to Right
+        $('.client-container').animate({ scrollLeft: "-=200px"}, "slow");
+      }
+      else if(direction == "right"){
+        // Move Right to Left
+        $('.client-container').animate({ scrollLeft: "+=200px"}, "slow");
+      }
+    }
+    ctrl.checkCtrlActive = function(direction){
+      if(direction == "left"){
+        return ($('.client-container')[0].scrollLeft == 0);
+      }
+      else if(direction == "right"){
+        return (($('.client-container')[0].scrollLeft * 2) > $('.client-container')[0].scrollWidth);
+      }
+    }
    },
    templateUrl: 'views/pageTemplates/home/home.html'
 });

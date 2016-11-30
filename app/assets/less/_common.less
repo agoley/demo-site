@@ -1,6 +1,6 @@
-@full-screen:  ~"only screen and (min-width: 800px)";
-@medium-screen: ~"only screen and (min-width: 801px) and (max-width: 1024px)";
-@tablet-screen: ~"only screen and (min-width: 641px) and (max-width: 800px)";
+@full-screen:  ~"only screen and (min-width: 1112px)";
+@medium-screen: ~"only screen and (min-width: 961px) and (max-width: 1111px)";
+@tablet-screen: ~"only screen and (min-width: 641px) and (max-width: 960px)";
 @mobile-screen: ~"only screen and (max-width: 640px)";
 
 @md-breakpoint-screen: ~"only screen and (max-width: 960px)";
@@ -51,6 +51,8 @@ html, body {
 
      .page-container {
        padding-bottom:100px;
+       .sub-theme { background-color: @theme-color2 !important; padding: 0% 2%;}
+       .theme-padding { padding-left: 7%; padding-right: 7%;}
      }
    }
 }
