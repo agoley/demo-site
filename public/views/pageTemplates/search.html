@@ -1,0 +1,40 @@
+<!--<h1>You have {{$ctrl.searchResults.length}} results for "{{$ctrl.Id}}"</h1>-->
+<div class="page-container">
+  <div class="dkw-searchResults-section">
+    <!-- Results Header -->
+    <div class="results-header">
+      <div class="results-title">{{$ctrl.searchResults.all.length}} Results for <span class="results-search">"{{$ctrl.Id}}"</span></div>
+
+      <div class="results-filter">
+        <div class="filter-header">Filter By: </div>
+        <div class="filter-container">
+          <div class="filter-ctrl">All</div>
+          <div class="filter-ctrl">Solutions</div>
+          <div class="filter-ctrl">Contract Vehicles</div>
+          <div class="filter-ctrl">News</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Content -->
+    <div class="results-data">
+      <div class="data-item" ng-repeat="item in $ctrl.searchResults.displayed">
+        <div class="item-icon"><div class="icon-circle"></div></div>
+        <div class="item-content">
+          <div class="content-title" ng-bind-html="$ctrl.highlightSearch(item.title)"></div>
+          <div class="content-section">{{item.section}}</div>
+          <!--<div class="content-preview">...{{$ctrl.getPreview(item.content) | limitTo: 100}}...</div>-->
+          <div class="content-preview" ng-bind-html="$ctrl.highlightSearch($ctrl.getPreview(item.content, 100))"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--Results Control-->
+    <div class="resutls-ctrl">
+      <div class="page-ctrl-container">
+        <div class="page-selector" ng-repeat="i in $ctrl.searchResults.totalPages track by $index" ng-class="{active: i == $ctrl.searchResults.page }" ng-click="">{{$index}}</div>
+      </div>
+      <div class="page-size-container"></div>
+    </div>
+  </div>
+</div>

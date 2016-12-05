@@ -1,0 +1,81 @@
+.page-container {
+  .dkw-searchResults-section {
+    .results-header {
+      color: rgba(255,255,255,1);
+      background-color: @theme-fade-color;
+      height: 175px;
+      width: 100%;
+      position: relative;
+      padding: 50px 7%;
+      .results-title {
+        font-size: 2rem;
+        .results-search {
+          font-weight: bold;
+        }
+      }
+      .results-filter {
+        height: 50px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        padding: 0px 7%;
+        .filter-header { display: inline-block; font-weight: bold;}
+        .filter-container {
+          display: inline-block;
+          .filter-ctrl {
+            display: inline-block;
+            padding: 5px;
+            &+.filter-ctrl { border-left: 1px solid #fff;}
+          }
+        }
+      }
+    }
+
+    .results-data {
+      padding: 10px 7%;
+
+      .data-item {
+        padding: 5px;
+        -webkit-animation: fadeInUp 1.0s;
+        animation: fadeInUp 1.0s;
+        .item-icon {
+          display: inline-block;
+          vertical-align: top;
+          padding-right: 10px;
+          .icon-circle {
+            background-color: @theme-color2;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            margin: 12px;
+          }
+        }
+        .item-content {
+          display: inline-block;
+          padding: 10px;
+          width: 90%;
+          vertical-align: top;
+          .highlightedText { font-weight: bold; }
+          .content-title { font-size: 1.5rem;}
+          .content-section { font-size: 1.1rem;}
+          .content-text { font-size: 0.9rem;}
+        }
+        &+.data-item { border-top: 1px solid rgba(0,0,0,1); }
+      }
+    }
+    .resutls-ctrl {
+      padding: 10px 7%;
+      .page-ctrl-container {
+        width: 50%;
+        display: inline-block;
+        float: left;
+        .page-selector {
+          padding: 10px;
+          font-weight: bold;
+          display: inline-block;        
+        }
+      }
+    }
+  }
+}

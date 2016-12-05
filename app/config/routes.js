@@ -36,6 +36,15 @@ dkwSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', func
             component: 'netCentricSolutions'
           }
         }
+      })
+      .state('app.search', {
+        url: "search/:searchquery",
+        views: {
+          'content@': {
+            //templateUrl: 'views/pageTemplates/solutions/net-centric-solutions.html'
+            component: 'search'
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/');
