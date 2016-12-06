@@ -6,7 +6,7 @@ components.component('dkwHeader', {
 	require: {
       parent: '^all'
     },
-	controller: function ($timeout, $mdSidenav, $log) {
+	controller: function ($timeout, $mdSidenav, $log, $state) {
       var ctrl = this;
 		ctrl.isSearching = false;
 		ctrl.menu;
@@ -453,6 +453,14 @@ components.component('dkwHeader', {
 		ctrl.toggleIsSearching = function () {
 			$("#searchInput").slideToggle( "fast");
 		}
+
+    ctrl.goToSearch = function (){
+      if(ctrl.query.length > 0){
+        ctrl.toggleIsSearching();
+        $state.go('app.search', { searchquery: ctrl.query });
+        ctrl.query = "";
+      }
+    }
 
    },
    templateUrl: 'views/dkw_header.html'

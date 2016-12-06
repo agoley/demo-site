@@ -40,7 +40,7 @@ components.component('search', {
         ]
       };
 
-      ctrl.searchResults = {"all": [], "displayed":[], "page":1, "totalPages":[], "displayNum":10, "displayInc":[10,20,50] };
+      ctrl.searchResults = {"all": [], "filtered":[], "displayed":[], "displaySection":"all", "page":1, "totalPages":[], "displayNum":10, "displayInc":[10,20,50] };
 
       ctrl.highlightSearch = function(text){
           if(text == undefined){
@@ -70,6 +70,15 @@ components.component('search', {
         return returnStr;
       }
 
+      ctrl.getItemNum = function(type){
+        if(type == "min"){
+          return (1 + ((ctrl.searchResults.page-1) * ctrl.searchResults.displayNum));
+        }
+        else if(type=="max"){
+          var calcMax = (ctrl.searchResults.page * ctrl.searchResults.displayNum);
+          return (ctrl.searchResults.filtered.length < calcMax ? ctrl.searchResults.filtered.length : calcMax );
+        }
+      }
       ctrl.getPreview = function(content, length){
         if(typeof content == 'string'){
           var queryIndex = content.toLowerCase().indexOf(ctrl.Id.toLowerCase());
@@ -137,16 +146,35 @@ components.component('search', {
         ctrl.searchResults.all = object;
 
         //set display results
-        ctrl.searchResults.totalPages = new Array(Math.ceil(ctrl.searchResults.all.length / ctrl.searchResults.displayNum));
-        ctrl.searchResults.displayed = ctrl.searchResults.all.slice(0, ctrl.searchResults.displayNum);
+        ctrl.searchResults.filtered = ctrl.searchResults.all;
+        ctrl.searchResults.totalPages = new Array(Math.ceil(ctrl.searchResults.filtered.length / ctrl.searchResults.displayNum));
+        ctrl.searchResults.displayed = ctrl.searchResults.filtered.slice(0, ctrl.searchResults.displayNum);
       }
 
       ctrl.setDisplayPage = function(page){
-        //ctrl.searchResults = {"all": [], "displayed":[], "page":0, "totalPages":1, "displayNum":10, "displayInc":[10,20,50] };
         ctrl.searchResults.page = page;
         var min = (page-1) * ctrl.searchResults.displayNum;
         var max = min + ctrl.searchResults.displayNum;
-        ctrl.searchResults.displayed = ctrl.searchResults.all.slice(min, max);
+        ctrl.searchResults.displayed = ctrl.searchResults.filtered.slice(min, max);
+      }
+      ctrl.setDisplayPageSize = function(size){
+        ctrl.searchResults.displayNum = size;
+        var min = 0;
+        var max = ctrl.searchResults.displayNum;
+        ctrl.searchResults.totalPages = new Array(Math.ceil(ctrl.searchResults.filtered.length / ctrl.searchResults.displayNum));
+        ctrl.searchResults.displayed = ctrl.searchResults.filtered.slice(min, max);
+      }
+      ctrl.setDisplaySection = function(section){
+        ctrl.searchResults.displaySection = section;
+        if(section == 'all'){
+          ctrl.searchResults.filtered = ctrl.searchResults.all;
+        }
+        else {
+          ctrl.searchResults.filtered = $.grep(ctrl.searchResults.all, function(e){ return e.section == section });
+        }
+        ctrl.searchResults.page = 1;
+        ctrl.searchResults.totalPages = new Array(Math.ceil(ctrl.searchResults.filtered.length / ctrl.searchResults.displayNum));
+        ctrl.searchResults.displayed = ctrl.searchResults.filtered.slice(0, ctrl.searchResults.displayNum);
       }
 
       function searchSolutions(query){
@@ -253,7 +281,7 @@ components.component('search', {
           // search content
           var contentMatches = (data.content.toLowerCase().match(new RegExp(query.toLowerCase(), "g")) || []).length;
           if(titleMatches > 0 || contentMatches > 0){
-            results.push({"title":data.sectionTitle, "section":"news", "content":data.content, "state":"", "hits":(titleMatches + contentMatches)});
+            results.push({"title":data.sectionTitle, "section":"contractVehicles", "content":data.content, "state":"", "hits":(titleMatches + contentMatches)});
           }
         }
         return results;

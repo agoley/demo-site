@@ -34,7 +34,8 @@ html, body {
 	min-height: 100%;
 	/* equal to footer height */
    margin-bottom: -300px;
-   background-color: white;
+   //background-color: white;
+   background-color: #eceff1;
    &::after {
       content: "";
       display: block;
@@ -87,7 +88,7 @@ html, body {
     opacity: 0.8;
     &+.social-icon { margin-top: 3px; @media @mobile-screen { margin: 0; }}
     &:hover { opacity: 1; }
-    @media @mobile-screen { display: inline-block; width: 25%; float: left; }
+    @media @mobile-screen { display: inline-block; width: 25%; float: left; opacity: 1; height: 100%;}
     &.color1 { background-color: rgba(59, 89, 152,1);}
     &.color2 { background-color: rgba(85, 172, 238,1); }
     &.color3 { background-color: rgba(187, 0, 0,1);}

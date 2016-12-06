@@ -80,7 +80,7 @@
    <div
       id="searchInput">
       <md-input-container
-								  class="md-icon-float md-icon-right md-block" 
+								  class="md-icon-float md-icon-right md-block"
 								  style="margin-top: 30px">
          <!-- Use floating label instead of placeholder -->
          <label>
@@ -90,7 +90,9 @@
          </i>
          Search
          </label>
-         <input ng-model="$ctrl.query" type="text">
+         <form ng-submit="$ctrl.goToSearch()">
+           <input ng-model="$ctrl.query" type="text">
+         </form>
          <md-icon
             ng-click="$ctrl.toggleIsSearching()"
             class="closeSearchBtn"
