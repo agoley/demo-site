@@ -264,7 +264,7 @@ components.component('search', {
           // search content
           var contentMatches = (data.content.toLowerCase().match(new RegExp(query.toLowerCase(), "g")) || []).length;
           if(titleMatches > 0 || contentMatches > 0){
-            results.push({"title":data.title, "section":"news", "content":data.content, "state":"", "hits":(titleMatches + contentMatches)});
+            results.push({"title":data.title, "section":"news", "content":data.content, "state":"app", "hits":(titleMatches + contentMatches)});
           }
         }
         return results;
@@ -281,7 +281,7 @@ components.component('search', {
           // search content
           var contentMatches = (data.content.toLowerCase().match(new RegExp(query.toLowerCase(), "g")) || []).length;
           if(titleMatches > 0 || contentMatches > 0){
-            results.push({"title":data.sectionTitle, "section":"contractVehicles", "content":data.content, "state":"", "hits":(titleMatches + contentMatches)});
+            results.push({"title":data.sectionTitle, "section":"contractVehicles", "content":data.content, "state":"app", "hits":(titleMatches + contentMatches)});
           }
         }
         return results;
