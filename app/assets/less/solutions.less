@@ -7,20 +7,21 @@
         position: relative;
         background-color: @theme-sub-color;
         width: 100%;
-        padding: 60px 7% 40px;
+        padding: 60px 0% 40px;
         min-height: @header-height;
         overflow: hidden;
+        @media @mobile-screen { min-height: 230px; }
         .header-text {
           position: absolute;
-          left: 7%;
+          //left: 7%;
           top: 0;
           background-color: @theme-sub-fade-color;
           text-align: left;
-          max-width: 60%;
+          width: 100%;
 
           z-index: 3;
           height: 100%;
-          padding: 60px 20px 40px;
+          padding: 60px 7% 40px;
           @media @tablet-screen, @mobile-screen {
             max-width: 100%;
             left: 0;
@@ -45,16 +46,19 @@
         }
         .header-image {
           position: absolute;
-          right:7%;
+          //right:7%;
           top:0;
           height: @header-height;
-          max-width: 60%;
+          //max-width: 60%;
+          width: 100%;
           z-index: 1;
           -webkit-animation: fadeIn 1.5s;
           animation: fadeIn 1.5s;
           &.ng-leave { display: none;}
           img {
-            height: 100%;
+            width: 100%;
+            min-height: 100%;
+            opacity: 0.8;
             @media @tablet-screen { width: 100%; }
           }
           @media @mobile-screen { width: 100% !important; height: 100%; left:0;}
@@ -68,7 +72,7 @@
         width: 100%;
         text-align: center;
         @media @tablet-screen, @mobile-screen { padding: 10px 5%;}
-        .nav-container {          
+        .nav-container {
           @media @tablet-screen, @mobile-screen {
             height: 55px;
             overflow-x: auto;
@@ -96,6 +100,16 @@
             }
           }
         }
+      }
+      .mobile-directions {
+        text-align: center;
+        background-color: @theme-fade-color2;
+        font-size: 1rem;
+        font-weight: bold;
+        display: none;
+        padding: 4px;
+        color: rgba(255,255,255,1);
+        @media @tablet-screen, @mobile-screen { display: block;}
       }
     }
     .solution-content {

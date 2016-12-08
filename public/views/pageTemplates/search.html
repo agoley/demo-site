@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+    <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
 
     <!-- Results Content -->
     <div class="results-data" ng-if="$ctrl.searchResults.filtered.length > 0 && $ctrl.searchResults.displayed.length > 0 ">
@@ -29,7 +30,7 @@
           <div class="content-title" ng-bind-html="$ctrl.highlightSearch(item.title)"></div>
           <div class="content-section">{{item.section}}</div>
           <!--<div class="content-preview">...{{$ctrl.getPreview(item.content) | limitTo: 100}}...</div>-->
-          <div class="content-preview" ng-bind-html="$ctrl.highlightSearch($ctrl.getPreview(item.content, 100))"></div>
+          <div class="content-preview" ng-bind-html="$ctrl.highlightSearch($ctrl.getPreview(item.content, 150))"></div>
         </div>
       </div>
     </div>

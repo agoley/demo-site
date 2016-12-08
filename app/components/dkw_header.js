@@ -311,7 +311,7 @@ components.component('dkwHeader', {
 				type: 'submenu',
 				submenu: "ourSolutionsMenu"
 			},
-			{name:'Qaulity Managment',
+			{name:'Quality Managment',
 				state:'app'},
 			{
 				name:'Contract Vehicles',

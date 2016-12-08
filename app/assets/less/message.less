@@ -5,18 +5,15 @@
 }
 
 .message-body {
-	margin-bottom: 60px;	
+	margin-bottom: 60px;
 	md-content {
 		.message-content {
-			padding: 0 50px 0 50px;
-
+			padding: 0 50px;
+			@media @tablet-screen, @mobile-screen { padding: 0px;}
 			.president-img {
 				height: 400px;
 				width: 275px;
-				padding:  0 20px 20px 0;
-				@tablet-screen, @mobile-screen {
-					padding:  0 20px 0 0;
-				}
+				padding:  0 20px 20px 0;				
 			}
 		}
 	}

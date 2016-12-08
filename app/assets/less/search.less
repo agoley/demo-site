@@ -57,6 +57,17 @@
       }
     }
 
+    .mobile-directions {
+      text-align: center;
+      background-color: @theme-fade-color2;
+      font-size: 1rem;
+      font-weight: bold;
+      display: none;
+      padding: 4px;
+      color: rgba(255,255,255,1);
+      @media @tablet-screen, @mobile-screen { display: block;}
+    }
+
     .results-data, .no-results-data {
       padding: 10px 7%;
       .error-msg {

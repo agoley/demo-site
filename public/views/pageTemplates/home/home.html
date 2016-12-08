@@ -25,13 +25,13 @@
          </div>
       </div>
       <div class="all-solutions">
-         <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
          <div class="solutions-container">
             <div class="solution-item" ng-repeat="item in $ctrl.solutions" ng-class="{'active': $ctrl.isSelected(item)}" ng-click="$ctrl.changeSelected(item)">
                <div class="selected-point" ng-if="$ctrl.isSelected(item)"></div>
                <div class="item-title">{{item.title}}</div>
             </div>
          </div>
+         <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
       </div>
    </section>
    <!-- Spacer Image -->
