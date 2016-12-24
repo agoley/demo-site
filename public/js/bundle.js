@@ -584,12 +584,16 @@ components.component('dkwHeader', {
 
     	function buildToggler(navID) {
       	return function() {
+			// hide the social links if this is mobile
+			if (window.innerWidth < 641) {
+				$(".social-links").slideToggle("fast");
+			}
         	// Component lookup should always be available
 			// since we are not using `ng-if`
         	$mdSidenav(navID)
 				.toggle()
 				.then(function () {
-            	//$log.debug("toggle " + navID + " is done");
+					// nothing currently
           	});
       	}
 		}
@@ -599,12 +603,15 @@ components.component('dkwHeader', {
 			// available since we are not using `ng-if`
       	$mdSidenav('right').close()
 				.then(function () {
-					//$log.debug("close RIGHT is done");
+				// show the social links if this is mobile
+				if (window.innerWidth < 641) {
+					$(".social-links").slideToggle("fast");
+				}
         	});
     	};
 
 		ctrl.toggleIsSearching = function () {
-			$("#searchInput").slideToggle( "fast");
+			$("#searchInput").slideToggle("fast");
 		}
 
     ctrl.goToSearch = function (){
