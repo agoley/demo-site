@@ -39,51 +39,64 @@ components.component('dkwHeader', {
 			sections: [
 				{
 					name:'About Enterprise Net-Centric Solutions',
-					state:'app.solutions.netCentricSolutions({Id:""})'
+					state:'app.solutions.netCentricSolutions({Id:""})',
+					params: {"Id":""}
 				},
 				{
 					name:'IT Service Management',
-					state:'app.solutions.netCentricSolutions({Id: "it-service-management" })'
+					state:'app.solutions.netCentricSolutions({Id: "it-service-management" })',
+					params: {"Id":"it-service-management" }
 				},
 				{
 					name:'Mobile Solutions',
-					state:'app.solutions.netCentricSolutions({Id: "mobile-solutions" })'
+					state:'app.solutions.netCentricSolutions({Id: "mobile-solutions" })',
+					params: {"Id": "mobile-solutions" }
 				},
 				{
 					name:'Application Development',
-					state:'app.solutions.netCentricSolutions({Id: "application-development" })'
+					state:'app.solutions.netCentricSolutions({Id: "application-development" })',
+					params: {"Id": "application-development" }
+				
 				},
 				{
 					name:'Operations and Maintenance',
-					state:'app.solutions.netCentricSolutions({Id: "operations-and-maintenance" })'
+					state:'app.solutions.netCentricSolutions({Id: "operations-and-maintenance" })',
+					params: {"Id": "operations-and-maintenance" }
 				},
 				{
 					name:'IV&V',
-					state:'app.solutions.netCentricSolutions({Id: "iv&v" })'
+					state:'app.solutions.netCentricSolutions({Id: "iv&v" })',
+					params: {"Id": "iv&v" }
 				},
 				{
 					name:'Service Desk',
-					state:'app.solutions.netCentricSolutions({Id: "service-desk" })'
+					state:'app.solutions.netCentricSolutions({Id: "service-desk" })',
+					paarams: {"Id": "service-desk" }
 				},
 				{
 					name:'C5ISR',
-					state:'app.solutions.netCentricSolutions({Id: "c5isr" })'
+					state:'app.solutions.netCentricSolutions({Id: "c5isr" })',
+					params: {"Id": "c5isr" }
 				},
 				{
 					name:'Disabilty Accommodations',
-					state:'app.solutions.netCentricSolutions({Id: "disability-accommodations" })'
+					state:'app.solutions.netCentricSolutions({Id: "disability-accommodations" })',
+					params: {"Id": "disability-accommodations" }
 				},
 				{
 					name:'Systems Engineering',
-					state:'app.solutions.netCentricSolutions({Id: "systems-engineering" })'
+					state:'app.solutions.netCentricSolutions({Id: "systems-engineering" })',
+					params: {"Id": "systems-engineering" }
 				},
 				{
 					name:'Healthcare IT',
-					state:'app.solutions.netCentricSolutions({Id: "healthcare-it" })'
+					state:'app.solutions.netCentricSolutions({Id: "healthcare-it" })',
+					params: {"Id": "healthcare-it" }
 				},
 				{
 					name:'Datacenter Support',
-					state:'app.solutions.netCentricSolutions({Id: "datacenter-support" })'
+					state:'app.solutions.netCentricSolutions({Id: "datacenter-support" })',
+					params: {"Id": "datacenter-support" }
 				}
 			]
 		};
@@ -351,7 +364,8 @@ components.component('dkwHeader', {
 			}
 		}
 		ctrl.onMenuItemClick = function (item) {
-			if (item.type === 'submenu') {
+			console.log(item);
+			if (item.type == 'submenu') {
 				switch (item.submenu) {
 					case 'ourCompanyMenu':
 						ctrl.menu = ctrl.ourCompanyMenu;
@@ -387,6 +401,14 @@ components.component('dkwHeader', {
 						ctrl.menu = ctrl.mainMenu;
 						break;
 				}
+			} else {
+				var index = item.state.indexOf('(');
+				if(index < 0) {
+					index = item.state.length + 1;
+				}
+				var state = item.state.slice(0, index);
+				$state.go(state, item.params);
+				ctrl.close();
 			}
 		}
 
