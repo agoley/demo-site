@@ -3,7 +3,10 @@
    <section class="dkw-carousel">
       <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
          <uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
-            <div class="main-img" back-img="{{slide.image}}"></div>
+            <div class="main-img image" ng-if="slide.type == 'img'" back-img="{{slide.image}}"></div>
+            <video class="main-img video" autoplay="" loop="" >
+              <source ng-src="{{slide.location}}" />
+            </video>
             <div class="carousel-caption">
                <div class="caption-title">{{slide.title}}</div>
                <div class="caption-text">{{slide.text}}</div>

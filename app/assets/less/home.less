@@ -29,13 +29,25 @@
               z-index:0;
               top:0;
               left: 0;
-              /* Create the parallax scrolling effect */
-              //background-position: center;
-              //background-attachment: fixed;
-              background-repeat: no-repeat;
-              background-size: cover;
-              opacity: 1;
-
+              &.video {
+                position: absolute;
+                //background: url(mel.jpg) no-repeat;
+                background-size: 100% 100%;
+                top: 0px;
+                left: 0px; /* fixed to left. Replace it by right if you want.*/
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+              }
+              &.image {
+                /* Create the parallax scrolling effect */
+                //background-position: center;
+                //background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 1;
+              }
               @media @tablet-screen, @mobile-screen {
                 height: @mobile-height;
                 background-attachment: inherit;
@@ -103,7 +115,7 @@
         border-bottom: 1px solid rgba(150,150,150,1);
         display: block;
         background-color: rgba(220,220,220,0.8);
-        z-index: 1;      
+        z-index: 1;
         .solutions-title {
           position: absolute;
           top: 30px;
