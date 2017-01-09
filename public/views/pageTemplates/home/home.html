@@ -3,8 +3,9 @@
    <section class="dkw-carousel">
       <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
          <uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
-            <div class="main-img image" ng-if="slide.type == 'img'" back-img="{{slide.image}}"></div>
-            <video class="main-img video" autoplay="" loop="" >
+            <div class="img-cover"></div>
+            <img class="main-img image" ng-if="slide.type == 'img'" ng-src="{{slide.image}}">
+            <video class="main-img video" ng-if="slide.type == 'video'" autoplay="" loop="" >
               <source ng-src="{{slide.location}}" />
             </video>
             <div class="carousel-caption">
@@ -38,7 +39,10 @@
       </div>
    </section>
    <!-- Spacer Image -->
-   <section class="parallax-img" back-img="{{$ctrl.image1}}"></section>
+   <section class="parallax-img">
+     <div class="parallax-cover"></div>
+     <div class="parallax-main" back-img="{{$ctrl.image1}}"></div>
+   </section>
    <!--News-->
    <section class="dkw-news">
       <div ng-cloak>
@@ -137,20 +141,23 @@
          </md-content>
       </div>
    </section>
-   <!-- Spacer Image -->
-   <section class="parallax-img" back-img="{{$ctrl.image2}}"></section>
+   <!-- Spacer Image -->   
+   <section class="parallax-img">
+     <div class="parallax-cover"></div>
+     <div class="parallax-main" back-img="{{$ctrl.image2}}"></div>
+   </section>
    <!--Key Clients-->
    <section class="dkw-key-clients">
       <div class="section-title">Key Clients & Certifications</div>
       <div class="clients-section">
-        <i class="fa fa-chevron-left" aria-hidden="true" ng-click="$ctrl.clientCtrl('left')" ng-class="{inactive: $ctrl.checkCtrlActive('left')}"></i>
+        <i class="fa fa-angle-left" aria-hidden="true" ng-click="$ctrl.clientCtrl('left')" ng-class="{inactive: $ctrl.checkCtrlActive('left')}"></i>
         <div class="client-container">
            <a ng-href="{{item.url}}" class="client-item" ng-repeat="item in $ctrl.keyClients" target="_blank">
              <img ng-src="{{item.image}}" />
            </a>
         </div>
-        <i class="fa fa-chevron-right" aria-hidden="true" ng-click="$ctrl.clientCtrl('right')" ng-class="{inactive: $ctrl.checkCtrlActive('right')}"></i>
+        <i class="fa fa-angle-right" aria-hidden="true" ng-click="$ctrl.clientCtrl('right')" ng-class="{inactive: $ctrl.checkCtrlActive('right')}"></i>
       </div>
-      <div class="mobile-directions"><i class="fa fa-chevron-left"></i> <span>SCROLL</span> <i class="fa fa-chevron-right"></i></div>
+      <div class="mobile-directions"><i class="fa fa-angle-left"></i> <span>SCROLL</span> <i class="fa fa-angle-right"></i></div>
    </section>
 </div>

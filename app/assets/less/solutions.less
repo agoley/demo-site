@@ -31,6 +31,8 @@
             font-size: 2.2rem;
             font-weight: bold;
             text-decoration: none;
+            //-webkit-animation:1s fadeInDown ease;
+            //animation:1s fadeInDown ease;
             &:hover { text-decoration: none; }
             @media @tablet-screen, @mobile-screen { font-size: 1.8rem; }
           }
@@ -38,8 +40,8 @@
             color:rgba(0,0,0,1);
             padding-left: 10px;
             font-size: 1.8rem;
-            -webkit-animation: fadeIn 2.0s;
-            animation: fadeIn 2.0s;
+            -webkit-animation:0.5s fadeInUp ease;
+            animation:0.5s fadeInUp ease;
             &.ng-leave { display: none;}
             @media @tablet-screen, @mobile-screen { font-size: 1.3rem; color: rgba(255,255,255,1);}
           }

@@ -654,7 +654,7 @@ components.component('home', {
 	controller: function () {
       var ctrl = this;
       // variables
-      ctrl.myInterval = 10000;
+      ctrl.myInterval = 7000;
       ctrl.active = 0;
 
       ctrl.slides = [
@@ -662,7 +662,7 @@ components.component('home', {
         {"id":1, "type":"img", "image":"images/carousel/washington-dc2.jpg", "title":"Over a Decade of Experience", "text":"Focusing on enterprise solutions and services for more than 70 Federal Government customers"},
         {"id":2, "type":"img", "image":"images/carousel/washington-dc1.jpg", "title":"The DKW Commitment", "text":"Our Center of Excellence (COEs) ensure that our customers receive the superior knowledge and expertise needed to rapidly launch applications without sacrificing quality"},
         //{"id":3, "type":"img", "image":"images/carousel/washington-dc3.jpg", "title":"Our Distinction", "text":"What distinguishes DKW is the call to public service that our people bring to the job, We are motivated to perform at a high level"},
-        {"id":3, "type":"video", "location":"images/carousel/washington-dc-vid.mov", "title":"Our Distinction", "text":"What distinguishes DKW is the call to public service that our people bring to the job, We are motivated to perform at a high level"},
+        {"id":3, "type":"video", "location":"images/carousel/washington-dc-vid2.mov", "title":"Our Distinction", "text":"What distinguishes DKW is the call to public service that our people bring to the job, We are motivated to perform at a high level"},
       ];
 
       ctrl.solutions = [
