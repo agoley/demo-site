@@ -43,7 +43,6 @@
               left: 0;
               &.video {
                 position: absolute;
-                //background: url(mel.jpg) no-repeat;
                 background-size: 100% 100%;
                 top: 0px;
                 left: 0px; /* fixed to left. Replace it by right if you want.*/
@@ -51,18 +50,20 @@
                 min-height: 100%;
                 width: auto;
                 height: auto;
+                @media @mobile-screen { display: none; }
               }
-              &.image {
-                /* Create the parallax scrolling effect */
-                //background-position: center;
-                //background-attachment: fixed;
+              &.video-mobile {
                 background-repeat: no-repeat;
                 background-size: cover;
                 opacity: 0.9;
-                @media @tablet-screen, @mobile-screen {
-                  max-width: 200%;
-                  width: 150%;
-                }
+                display: none;
+                @media @tablet-screen, @mobile-screen { max-width: 200%;  width: 170%; display: block; }
+              }
+              &.image {
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 0.9;
+                @media @tablet-screen, @mobile-screen {  max-width: 200%; width: 150%;  }
               }
               @media @tablet-screen, @mobile-screen {
                 height: @mobile-height;
@@ -169,6 +170,7 @@
             .selected-text {
               font-size: 1.2rem;
               margin-bottom: 20px;
+              position: relative;
               @media @medium-screen { font-size: 1rem; }
             }
             button {
