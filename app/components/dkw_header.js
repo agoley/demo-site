@@ -457,6 +457,10 @@ components.component('dkwHeader', {
 			if (window.innerWidth < 641) {
 				$(".social-links").slideToggle("fast");
 			}
+			// Disable scrolling on main-body.
+			$("body").addClass('not-scrollable');
+			$("#dkw-body").addClass('overlay');
+
         	// Component lookup should always be available
 			// since we are not using `ng-if`
         	$mdSidenav(navID)
@@ -476,6 +480,10 @@ components.component('dkwHeader', {
 				if (window.innerWidth < 641) {
 					$(".social-links").slideToggle("fast");
 				}
+				// Enable scrolling on the main body
+				$("body").removeClass('not-scrollable');
+				$("#dkw-body").removeClass('overlay');
+
         	});
     	};
 
