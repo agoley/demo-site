@@ -49,11 +49,11 @@
     <!--Results Control-->
     <div class="results-ctrl" ng-if="$ctrl.searchResults.filtered.length > 0 && $ctrl.searchResults.displayed.length > 0 ">
       <div class="page-ctrl-container">
-        <span class="page-ctrl-header">Pages:</span>
+        <span class="page-ctrl-header">Page:</span>
         <div class="page-selector" ng-repeat="i in $ctrl.searchResults.totalPages track by $index" ng-class="{active: ($index+1) == $ctrl.searchResults.page }" ng-click="$ctrl.setDisplayPage($index+1)">{{$index+1}}</div>
       </div>
       <div class="page-size-container">
-        <span class="page-size-header">Pages Size:</span>
+        <span class="page-size-header">Page Size:</span>
         <div class="size-selector" ng-repeat="size in $ctrl.searchResults.displayInc" ng-class="{active: size == $ctrl.searchResults.displayNum }" ng-click="$ctrl.setDisplayPageSize(size)">{{size}}</div>
       </div>
     </div>
