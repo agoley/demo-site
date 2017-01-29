@@ -1,8 +1,7 @@
 <!-- template for the root component -->
 <div class="page-wrap">
 	<!-- all content needs to be inside of the page wrap div -->
-   <dkw-header/>
-
+   <dkw-header view="$ctrl.view"/>
    <!--Main Body Content-->
    <div id="dkw-body" class="mainBody" ui-view="content" autoscroll="true" aria-relevant="all" aria-live="assertive"></div>
 </div>

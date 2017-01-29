@@ -2,11 +2,11 @@
 // objects: view - this will store the state and other high level objects
 components.component('all', {
    bindings: {},
-	controller: function () {
+	controller: function ($scope) {
       var ctrl = this;
 		ctrl.view = {};
 		ctrl.view.isMobile = false;
-		ctrl.view.isSsearching = false;
+		ctrl.view.isSearching = false;
 		
 		// set mobile to true
 		var configForMobile = function () {
@@ -32,7 +32,8 @@ components.component('all', {
 		window.onresize = function(){
     		setTimeout(function(){
 				configView(); 
-			}, 500);
+				$scope.$apply();
+			}, 100);
 		};
    },
    templateUrl: 'views/all.html'

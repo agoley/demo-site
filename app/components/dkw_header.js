@@ -2,7 +2,6 @@
 
 // header component for DKWSite
 components.component('dkwHeader', {
-   bindings: {},
 	require: {
       parent: '^all'
     },
