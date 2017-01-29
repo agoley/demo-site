@@ -2,7 +2,7 @@
 	padding: 20px;
 	height: 90px;
 	i {
-		color: white;
+		color: @theme-color3;
 	}
 	#header-logo {
 		cursor: pointer;
@@ -27,64 +27,72 @@
       outline: none;
     }
 	&:hover {
-		color: #113d71;
+		color: @theme-color;
 	}
 }
 
 .menu-header {
-	color: white;
-	background-color: #113d71;
+	color: @theme-color3;
+	background-color: @theme-color;
 	padding: 20px;
 }
 
 .menu-title {
-	color: white;
+	color: @theme-color3;
 	font-size: 125%;
 	font-weight: bold;
 }
 
 .submenu-title {
+	color: @theme-darkfade-black;
 	font-weight: bold;
 }
 
 .menu-link {
 	margin-left: -18px;
-	h5 {a {font-weight: bold;}}
+	h5 {a {font-weight: bold; color: @theme-color}}
 }
 
 .dkw-menu {
-	background-color: white;
+	background-color: @theme-color3;
 	position: fixed;
 	.menu-content {
-		background-color: white;
+		background-color: @theme-color3;
 		position: relative;
-	}
-	
-	a {
-		color: @theme-color;
 	}
 }
 
 .dkw-menu-option {
-	color: white;
+	color: @theme-color3;
 	font-size: 120%;
 }
 
 .closeMenuBtn {
-	color: white;
+	color: @theme-color3;
 }
 
 .back-btn {
 	background-color: @theme-color2;
-	color: white;
+	color: @theme-color3;
+}
+
+.back-btn:hover {
+	opacity: 0.85;
+}
+
+.back-title {
+	color: @theme-color3;
+	font-weight: bold;
 }
 
 .back-chevron {
 	font-size: 150%;
 	padding: 5px 0 0 0;
+	color: @theme-color3;
 }
 
 .menu-chevron {
 	font-size: 150%;
 	padding: 0 0 15px 10px;
+	color: @theme-darkfade-black;
 }

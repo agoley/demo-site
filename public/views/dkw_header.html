@@ -38,7 +38,7 @@
                <div flex></div>
                <md-icon
                   ng-click="$ctrl.close()"
-                  style="color: white;"
+                  style="color: rgba(236, 239 , 241, 1);"
                   md-font-set="fa"> &#xf00d </md-icon>
             </h1>
          </md-toolbar>
@@ -48,12 +48,14 @@
                   ng-if="$ctrl.menu.title !== 'Main'"
                   class="md-2-line back-btn"
                   ng-click="$ctrl.onMenuBackClick()">
-                  <md-icon md-font-set="fa" class="back-chevron" style="color: white">
+                  <md-icon md-font-set="fa" class="back-chevron" >
                      &#xf053
                   </md-icon>
                   <div flex></div>
-                  <div style="text-align: right">
-                     <h4> {{$ctrl.menu.backMenuTitle}} </h4>
+                  <div style="text-align: right;">
+                     <h4 class="back-title"> 
+								{{$ctrl.menu.backMenuTitle}} 
+							</h4>
                   </div>
                   <md-divider></md-divider>
                </md-list-item>
