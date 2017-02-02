@@ -17,14 +17,15 @@
       overflow: hidden;
       @media @tablet-screen, @mobile-screen { height: @mobile-height;}
       .carousel {
+        height: 100%;
         .carousel-inner {
           position: relative;
           height: @carosel-height;
-          @media @tablet-screen, @mobile-screen { height: @mobile-height;}
+          @media @tablet-screen, @mobile-screen { height: 100%;/*@mobile-height;*/}
 
           .item {
             height: @carosel-height;
-            @media @tablet-screen, @mobile-screen { height: @mobile-height;}
+            @media @tablet-screen, @mobile-screen { height: 100%;/*@mobile-height;*/}
             .img-cover {
               position: absolute;
               top:0;
