@@ -1183,6 +1183,18 @@ directives.directive('backImg', ['$window', function($window) {
   }
 }]);
 
+directives.directive('heroImg', ['$window', function($window) {
+  return {
+    restrict: 'EA',
+    link: function ($scope, element, attrs) {
+      //640px
+      if($window.outerWidth < 640){
+        element.css({'height': ($window.outerHeight - 135) });
+      }      
+    }
+  }
+}]);
+
 directives.directive('randomMotion', ['$timeout', '$window', function($timeout, $window) {
   return {
     restrict: 'EA',
