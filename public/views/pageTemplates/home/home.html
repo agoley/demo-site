@@ -4,10 +4,10 @@
       <uib-carousel template-url="views/pageTemplates/home/carousel.html" active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="false" no-pause="true">
          <uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
             <div class="img-cover"></div>
-            <img class="main-img image" ng-if="slide.type == 'img'" ng-src="{{slide.image}}">
+            <img class="main-img image" ng-if="slide.type == 'img'" ng-src="{{slide.image}}" hero-img>
             <!-- Video and Mobile Replacement -->
             <video class="main-img video" id="carouselVideo" ng-if="slide.type == 'video'" autoplay loop><source ng-src="{{slide.location}}" /></video>
-            <img class="main-img video-mobile" ng-if="slide.type == 'video'" ng-src="{{slide.image}}">
+            <img class="main-img video-mobile" ng-if="slide.type == 'video'" ng-src="{{slide.image}}" hero-img>
 
             <div class="carousel-caption">
                <div class="caption-title">{{slide.title}}</div>
