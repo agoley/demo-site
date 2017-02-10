@@ -117,7 +117,7 @@
                      </md-button>
                   </md-card-actions>-->
                </md-card>
-               <md-card md-theme-watch>
+               <md-card md-theme-watch ng-if="$ctrl.showMore">
                   <md-card-title>
                      <md-card-title-text>
                         <span class="md-headline">DKW Awarded $10 Million Dollar Contract to Provide Software Development Services to the United States Department of Agriculture (USDA), Food Safety and Inspection Service</span>
@@ -137,7 +137,7 @@
                      </md-card-actions>-->
                </md-card>
                <div class="selected-content" layout layout-align="end">
-                  <md-button class="md-raised" ng-click="" aria-label="More">
+                  <md-button class="md-raised" ng-click="$ctrl.showMore = true" aria-label="More">
                      More Stories...
                   </md-button>
                </div>
